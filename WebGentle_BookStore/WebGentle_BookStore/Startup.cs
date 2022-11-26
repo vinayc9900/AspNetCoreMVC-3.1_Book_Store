@@ -16,6 +16,8 @@ namespace WebGentle_BookStore
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+          //  services.AddMvc(); // Tells that we are adding MVC To Application
+            services.AddControllersWithViews();  //
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,18 +54,35 @@ namespace WebGentle_BookStore
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGet("/", async context =>   // MapGet can handle only Get Response 
-                {
-                    await context.Response.WriteAsync("Hello World!");
-                });
+
+                endpoints.MapDefaultControllerRoute();// Telling to Start with Controller
+
+                //endpoints.MapGet("/", async context =>   // MapGet can handle only Get Response 
+                //{
+                //   // if(env.IsDevelopment()) //if(env.IsDevelopment("Development"))
+                //   // {
+                //   //     await context.Response.WriteAsync("Hello Development");
+                //   // }
+                //   //else if (env.IsProduction())
+                //   // {
+                //   //     await context.Response.WriteAsync("Hello Production");
+                //   // }
+                //   // else if (env.IsStaging())
+                //   // {
+                //   //     await context.Response.WriteAsync("Hello Staging");
+                //   // }
+                //   // else
+                //   // await context.Response.WriteAsync(env.EnvironmentName);
+                  
+                //});
             });
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.Map("/vinay", async context =>  // Map will handle all Responses
-                {
-                    await context.Response.WriteAsync("Hello Vinay!");
-                });
-            });
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.Map("/vinay", async context =>  // Map will handle all Responses plz use /vinay in URL
+            //    {
+            //        await context.Response.WriteAsync("Hello Vinay!");
+            //    });
+            //});
         }
     }
 }
