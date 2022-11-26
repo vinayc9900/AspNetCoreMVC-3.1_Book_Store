@@ -26,13 +26,42 @@ namespace WebGentle_BookStore
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseRouting();
+            //app.Use(async (context, next) =>   // Middleware 1
+            //{
+            //    await context.Response.WriteAsync("This is Book Store First Middleware Application");
+            //    await next();// Point/Execute the Next middleware
+
+            //    await context.Response.WriteAsync("This is Book Store in First Middleware after Executing Second Middleware ");
+            //});
+
+            //app.Use(async (context, next) =>   //Middleware 2
+            //{
+            //    await context.Response.WriteAsync("This is Book Store Second Middleware Application");
+            //    await next();// Point/Execute the Next middleware
+
+            //    await context.Response.WriteAsync("This is Book Store in Second Middleware after Executing Third Middleware ");
+            //});
+
+            //app.Use(async (context, next) =>   // Middleware 3
+            //{
+            //    await context.Response.WriteAsync("This is Book Store Third Middleware Application");
+            //    await next();
+            //});
+
+            app.UseRouting();  // This must be Placed First Among all following End Points
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGet("/", async context =>
+                endpoints.MapGet("/", async context =>   // MapGet can handle only Get Response 
                 {
                     await context.Response.WriteAsync("Hello World!");
+                });
+            });
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.Map("/vinay", async context =>  // Map will handle all Responses
+                {
+                    await context.Response.WriteAsync("Hello Vinay!");
                 });
             });
         }
