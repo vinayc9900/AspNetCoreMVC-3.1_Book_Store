@@ -19,12 +19,13 @@ namespace WebGentle_BookStore.Controllers
         {                                               // Note: In URL Method Names, parameter names are NOT CASE SESITIVE
             //http://localhost:58860/book/getAllbooks      {controller}/{Method}
             var data=_bookRepository.GetAllBooks();
-            return View();
+            return View(data);
         }
-        public BookModel GetBook(int id)
+        public ViewResult GetBook(int id)
         {
             //http://localhost:58860/book/getbook/2      {controller}/{Method}/{id}
-            return _bookRepository.BookById(id);
+            var data = _bookRepository.BookById(id);
+            return View(data);
         }
         public List<BookModel> SearchBooks(string bookName, string authorName)
         {
