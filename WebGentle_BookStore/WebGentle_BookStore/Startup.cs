@@ -35,6 +35,7 @@ namespace WebGentle_BookStore
             // To use Static files like images,css from Static Directory etc
 
             app.UseStaticFiles(); // For wwwroot static Directory
+            app.UsePathBase("/css");// Reads the css/Site.css file
             //app.UseStaticFiles(new StaticFileOptions
             //{
             //    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "MyStaticFiles")),
