@@ -1,83 +1,72 @@
 ﻿
 @{
-    Layout = null;
+    Layout="_Layout";
 }
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-    <link href="~/lib/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" />
-    <link href="~/css/Site.css" rel="stylesheet" />
+    <section class="jumbotron text-center">
 
-</head>
-<body class="container">
-    <img src="~/images/CI.png" class="logo" alt="logo" />
-    @*<img src="~/MyStaticFiles/Sudeep_081220_800_DN.jpg" class="logo" alt="dummy" />*@
-    <input type="button" value="Click me" class="btn btn-danger" />
-    <h1>Welcome to Book Store Application</h1>
-    <h1>Testing Razor compilation</h1>
-    <p>This is the Home Page of Book Store Appliacation </p>
-    <p>@DateTime.Now.ToString("dd/MM/yyyy")</p>
+        <div class="container">
+            <h1>Wel come to Book Store</h1>
+            <p class="lead text-muted">
+                This ia an Book Store Appliacation where we can search the Book
+            </p>
+            <a href="#" class="btn btn-primary">Search Books</a>
+        </div>
+        <div class="py-5 bg-light">
+            <h3 class="h3">Top Books</h3>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card">
+                            @*<div class="card-header">
 
-    <p>Single Line</p>
-    <h2>Sum=@(3+5)</h2>
-
-    <p>Multiline</p>
-    @{
-        var array1 = new List<int>() { 1, 2, 4, 5 };
-        int a = 1;
-        int b = 10;
-        int c = a + b;
-
-    }
-    <h3>Sum=@c</h3>
-    @if (a > 5)
-    {
-        a++;
-        <h4>I am from If Block and Value =@a</h4>
-    }
-    else if (a < 5)
-    {
-        <h4>I am from Else If Block </h4>
-    }
-    else
-    {
-
-    }
-
-    @switch (a)
-    {
-        case 1:<h4>I am in case 1</h4>
-            break;
-        case 2:<h4>I am in case 2</h4>
-            break;
-        case 3:<h4>I am in case 3</h4>
-            break;
-        default: <h4>I am in case Default</h4>
-            break;
-    }
-    @for (int i = 0; i < array1.Count; i++)
-    {
-        <h4>@array1[i]</h4>
-    }
-    @foreach (var item in array1)
-    {
-        <h4>@item</h4>
-    }
-    <h1>Ternary Operator- @(a==1 ? b=10:b=5)</h1>
-    <h5>b=@b</h5>
-    <h3>My Email- vinay@gmail.com</h3>
-    <h3>Twitter- @@WebGentle</h3>
-
-</body>
-<script src="~/lib/jquery/jquery.js"></script>
-</html>
-<script>
-
-    $(document).ready(function(){
-        //alert("Page Loaded");
-    });
-</script>
+                        </div>*@
+                            <p>Animation Books</p>
+                            <div class="card-body">
+                                <p class="card-text">
+                                    This is for Book info
+                                </p>
+                                
+                            </div>
+                            <div class="btn-group">
+                                <a href="#" class="btn btn-sm btn-outline-secondary">More..</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            @*<div class="card-header">
+                           <p class="card-text">Old Books</p>
+                        </div>*@
+                            <p class="card-text">Old Books</p>
+                            <div class="card-body">
+                                <p>Book 1</p>
+                                <p>Book 2</p>
+                                <p>Book 3</p>
+                            </div>
+                            <div class="card-footer">
+                                <p>More Info...</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            @*<div class="card-header">
+                         <p>New Books</p>
+                        </div>*@
+                            <p>New Books</p>
+                            <div class="card-body">
+                                <p>Book 1</p>
+                                <p>Book 2</p>
+                                <p>Book 3</p>
+                            </div>
+                            <div class="card-footer">
+                                <p>More Info...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
