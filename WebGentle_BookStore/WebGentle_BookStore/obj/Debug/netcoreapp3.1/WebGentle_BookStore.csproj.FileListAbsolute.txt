@@ -396,3 +396,4 @@ D:\MVC Practice\BookStore\WebGentle_BookStore\WebGentle_BookStore\bin\Debug\netc
 D:\MVC Practice\BookStore\WebGentle_BookStore\WebGentle_BookStore\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
 D:\MVC Practice\BookStore\WebGentle_BookStore\WebGentle_BookStore\obj\Debug\netcoreapp3.1\Razor\Views\Home\ContactUs.cshtml.g.cs
 D:\MVC Practice\BookStore\WebGentle_BookStore\WebGentle_BookStore\obj\Debug\netcoreapp3.1\Razor\Views\Book\GetBook.cshtml.g.cs
+D:\MVC Practice\BookStore\WebGentle_BookStore\WebGentle_BookStore\obj\Debug\netcoreapp3.1\Razor\Views\_ViewStart.cshtml.g.cs

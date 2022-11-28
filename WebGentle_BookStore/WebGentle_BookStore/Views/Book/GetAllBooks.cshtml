@@ -1,8 +1,6 @@
 ﻿@using WebGentle_BookStore.Models
 @model IEnumerable<BookModel>
-@{
-    Layout = "_Layout";
-}
+
 
 
 <div class="container">
@@ -20,6 +18,7 @@
                         <div class="d-flex justify-content-between align-content-center">
                             <div class="btn-group">
                                 <a href="/Book/GetBook/@book.Id" class="btn btn-sm btn-outline-secondary">View Details...</a>
+                                 
                             </div>
                             <small class="text-muted">@book.Author</small>
                         </div>

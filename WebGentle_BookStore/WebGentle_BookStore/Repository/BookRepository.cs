@@ -25,12 +25,12 @@ namespace WebGentle_BookStore.Repository
         {
             return new List<BookModel>()
             {
-                new BookModel()  {Id=1,Title= "Mvc",Author="Vinay",Description="Description for MVC Concept"},
-                new BookModel() { Id = 2, Title = "Java", Author = "Nitish",Description="Description for JAVA Concept" },
-                new BookModel() { Id = 3, Title = "ASP", Author = "Vijay" ,Description="Description for ASP Concept"},
-                new BookModel() { Id = 4, Title = "Selenium", Author = "Raju",Description="Description for SELENIUM Concept" },
-                new BookModel() { Id = 5, Title = "C++", Author = "Sanjay",Description="Description for C++ Concept" },
-                 new BookModel() { Id = 6, Title = "DevOps", Author = "Sanjay",Description="Description for DevOps Concept" }
+                new BookModel()  {Id=1,Title= "Mvc",Author="Vinay",Description="Description for MVC Concept",Category="Framework",TotalPages=1031,Language="English"},
+                new BookModel() { Id = 2, Title = "Java", Author = "Nitish",Description="Description for JAVA Concept",Category="Programming",TotalPages=855,Language="English" },
+                new BookModel() { Id = 3, Title = "ASP", Author = "Vijay" ,Description="Description for ASP Concept",Category="Framework",TotalPages=110,Language="English"},
+                new BookModel() { Id = 4, Title = "Selenium", Author = "Raju",Description="Description for SELENIUM Concept",Category="Testing",TotalPages=980,Language="English" },
+                new BookModel() { Id = 5, Title = "C++", Author = "Sanjay",Description="Description for C++ Concept",Category="Programming",TotalPages=1056,Language="English" },
+                 new BookModel() { Id = 6, Title = "DevOps", Author = "Sanjay",Description="Description for DevOps Concept",Category="Software",TotalPages=1087,Language="English" }
             };
         }
 
