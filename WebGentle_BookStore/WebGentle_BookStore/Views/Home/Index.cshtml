@@ -15,10 +15,11 @@
 </head>
 <body class="container">
     <img src="~/images/CI.png" class="logo" alt="logo" />
-    <img src="~/MyStaticFiles/Sudeep_081220_800_DN.jpg" class="logo" alt="dummy"/>
-    <input type="button" value="Click me" class="btn btn-primary"/>
+    @*<img src="~/MyStaticFiles/Sudeep_081220_800_DN.jpg" class="logo" alt="dummy" />*@
+    <input type="button" value="Click me" class="btn btn-danger" />
     <h1>Welcome to Book Store Application</h1>
-    <p>This is the Home Page of Book Store Appliacation</p>
+    <h1>Testing Razor compilation</h1>
+    <p>This is the Home Page of Book Store Appliacation </p>
     <p>@DateTime.Now.ToString("dd/MM/yyyy")</p>
 
     <p>Single Line</p>
@@ -70,12 +71,13 @@
     <h5>b=@b</h5>
     <h3>My Email- vinay@gmail.com</h3>
     <h3>Twitter- @@WebGentle</h3>
+
 </body>
 <script src="~/lib/jquery/jquery.js"></script>
 </html>
 <script>
 
     $(document).ready(function(){
-        alert("Page Loaded");
+        //alert("Page Loaded");
     });
 </script>

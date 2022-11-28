@@ -19,7 +19,10 @@ namespace WebGentle_BookStore
         public void ConfigureServices(IServiceCollection services)
         {
           //  services.AddMvc(); // Tells that we are adding MVC To Application
-            services.AddControllersWithViews();  //
+            services.AddControllersWithViews();
+            #if DEBUG   // Only apply for Development Environment
+            services.AddRazorPages().AddRazorRuntimeCompilation();//For  Razor file compilation 
+            #endif
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -31,7 +34,7 @@ namespace WebGentle_BookStore
             }
             // To use Static files like images,css from Static Directory etc
 
-            //app.UseStaticFiles(); 
+            app.UseStaticFiles(); // For wwwroot static Directory
             //app.UseStaticFiles(new StaticFileOptions
             //{
             //    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "MyStaticFiles")),
