@@ -44,6 +44,17 @@ namespace WebGentle_BookStore.Controllers
             //  http://localhost:58860/book/searchbooks?bookName=Mvc&authorName=Nitish   {controller}/{Method}?bookName=value&authorName=value
             return _bookRepository.SearchBooks(bookName, authorName);
         }
-        
+        public ViewResult AddNewBook()
+        {
+            Title = "Add Book";
+            return View();
+        }
+        [HttpPost]
+        public ViewResult AddNewBook(BookModel bookmodel)
+        {
+          
+            return View();
+        }
+
     }
 }
