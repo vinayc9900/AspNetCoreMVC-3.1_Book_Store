@@ -25,7 +25,7 @@ namespace WebGentle_BookStore.Repository
         {
             return new List<BookModel>()
             {
-                new BookModel()  {Id=1,Title= "Mvc",Author="Vinay",Description="Description for MVC Concept",Category="Framework",TotalPages=1031,Language="English"},
+                new BookModel()  {Id=1,Title= "MVC",Author="Vinay",Description="Description for MVC Concept",Category="Framework",TotalPages=1031,Language="English"},
                 new BookModel() { Id = 2, Title = "Java", Author = "Nitish",Description="Description for JAVA Concept",Category="Programming",TotalPages=855,Language="English" },
                 new BookModel() { Id = 3, Title = "ASP", Author = "Vijay" ,Description="Description for ASP Concept",Category="Framework",TotalPages=110,Language="English"},
                 new BookModel() { Id = 4, Title = "Selenium", Author = "Raju",Description="Description for SELENIUM Concept",Category="Testing",TotalPages=980,Language="English" },

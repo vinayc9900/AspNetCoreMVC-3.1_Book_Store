@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Book Store Appliacation</title>
+    <title> @ViewData["Title"] | Book Store Appliacation</title>
     <link href="~/lib/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" />
     <link href="~/css/Site.css" rel="stylesheet" />
 </head>
@@ -25,13 +25,16 @@
                             <a class="nav-link" href="#">Home <span class="sr-only"></span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/Home/AboutUs">About Us</a>
+                            <a class="nav-link" asp-controller="Home" asp-action="AboutUs">About Us</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/Home/ContactUs">Contact Us</a>
+                            <a class="nav-link" asp-controller="Home" asp-action="ContactUs">Contact Us</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/Book/GetAllBooks">View Books</a>
+                            <a class="nav-link" asp-controller="Book" asp-action="GetAllBooks">View Books</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-protocol="http" asp-host="webgentle.com"  asp-controller="Book" asp-action="GetAllBooks">New URL Link</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>

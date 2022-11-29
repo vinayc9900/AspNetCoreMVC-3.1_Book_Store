@@ -1,6 +1,17 @@
 ﻿
 @model IEnumerable<BookModel>
+@*@{
+    ViewData["Title"] = "Book Details";
+}*@
 
+@*@{
+    var parameters = new Dictionary<string, string>()
+{
+        {"name","Vinay" },
+         {"comapany","xyz" },
+          {"appName","bookStore" }
+    };
+}*@
 
 <div>
     <div class="container">
@@ -17,8 +28,18 @@
 
                             <div class="d-flex justify-content-between align-content-center">
                                 <div class="btn-group">
-                                    <a href="/Book/GetBook/@book.Id" class="btn btn-sm btn-outline-secondary">View Details...</a>
+                                    @*<a href="/Book/GetBook/@book.Id" class="btn btn-sm btn-outline-secondary">View Details...</a>*@
 
+                                    <a asp-route="bookDetailsRoute" asp-route-id="@book.Id" 
+                                       class="btn btn-sm btn-outline-secondary">View Details...</a>
+
+                                    @*<a asp-controller="Book" asp-action="GetBook" asp-route-id="@book.Id" asp-fragment="similarBooks"
+                                       class="btn btn-sm btn-outline-secondary">View Details...</a>*@
+
+                                    @* We can Use Multiple parameters-  asp-route-id="@book.Id" ,   asp-route-bookName="@book.Title"
+                                     For multiple parameters use this -   asp-all-route-data="@parameters"
+
+                                    *@
                                 </div>
                                 <small class="text-muted">@book.Author</small>
                             </div>

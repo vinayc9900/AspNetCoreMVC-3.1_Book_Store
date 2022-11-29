@@ -1,6 +1,15 @@
 ﻿
 
+    @{
 
+
+        var bookInfo = ViewData["Book"] as BookModel;// Need Type Casting
+       //ViewData["Title"] = "About Us";
+    }
 
 
 <h1>This is About Us of Book Store Application</h1>
+<h3>
+    @bookInfo.Author
+    @bookInfo.Id
+</h3>

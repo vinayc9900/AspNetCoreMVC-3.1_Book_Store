@@ -72,6 +72,11 @@ namespace WebGentle_BookStore
 
                 endpoints.MapDefaultControllerRoute();// Telling to Start with Controller
 
+                //endpoints.MapControllerRoute(   // Use while Working With anchor Tag Helper
+                //        name:"Default",
+                //        pattern:"bookApp/{controller=Home}/{action=Index}/{id?}"
+                //    );
+
                 //endpoints.MapGet("/", async context =>   // MapGet can handle only Get Response 
                 //{
                 //   // if(env.IsDevelopment()) //if(env.IsDevelopment("Development"))
