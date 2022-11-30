@@ -29,12 +29,12 @@ namespace WebGentle_BookStore.Controllers
             
         }
         [Route("book-details/{id}",Name="bookDetailsRoute")] 
-        public ViewResult GetBook(int id)
+        public async Task<ViewResult> GetBook(int id)
         {   
 
            
             //http://localhost:58860/book/getbook/2  {controller}/{Method}/{id}
-            var data = _bookRepository.BookById(id);
+            var data = await _bookRepository.BookById(id);
             Title = "Book Info- " + data.Title;
             return View(data);
         }

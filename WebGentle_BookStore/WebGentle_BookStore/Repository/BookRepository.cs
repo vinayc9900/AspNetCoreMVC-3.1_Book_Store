@@ -56,9 +56,25 @@ namespace WebGentle_BookStore.Repository
             }
             return books;
         }
-        public BookModel BookById(int id)
+        public async Task<BookModel> BookById(int id)
         {
-            return DataSource().Where(x => x.Id == id).FirstOrDefault();
+            var book =await  _context.Books.FindAsync(id);
+            //_context.Books.Where(x => x.Id == id).FirstOrDefaultAsync();
+            if(book!=null)
+            {
+                var bookDetails = new BookModel()
+                {
+                    Author = book.Author,
+                    Category = book.Category,
+                    Description = book.Description,
+                    Id = book.Id,
+                    Language = book.Language,
+                    Title = book.Title,
+                    TotalPages = book.TotalPages
+                };
+                return bookDetails;
+            }
+            return null;
         }
         public List<BookModel> SearchBooks(string title,string authorName)
         {
