@@ -54,11 +54,15 @@ namespace WebGentle_BookStore.Controllers
         [HttpPost]
         public async Task<IActionResult> AddNewBook(BookModel bookmodel)
         {
-            int id= await _bookRepository.AddNewBook(bookmodel);
-          if(id>0)
-         {
-                return RedirectToAction(nameof(AddNewBook),new { isSuccess=true,bookId=id});
+           if(ModelState.IsValid)
+            {
+                int id = await _bookRepository.AddNewBook(bookmodel);
+                if (id > 0)
+                {
+                    return RedirectToAction(nameof(AddNewBook), new { isSuccess = true, bookId = id });
+                }
             }
+         
             return View();
         }
 

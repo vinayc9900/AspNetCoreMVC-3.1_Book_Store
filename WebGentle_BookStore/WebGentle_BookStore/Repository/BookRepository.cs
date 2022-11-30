@@ -22,7 +22,7 @@ namespace WebGentle_BookStore.Repository
                 Author = bookModel.Author,
                 Title = bookModel.Title,
                 Description = bookModel.Description,
-                TotalPages = bookModel.TotalPages,
+                TotalPages = bookModel.TotalPages.HasValue ? bookModel.TotalPages.Value : 0,
                 Category = bookModel.Category,
                 CreatedOn = DateTime.Now,
                 UpdatedOn = DateTime.Now
