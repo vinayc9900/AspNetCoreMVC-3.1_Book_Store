@@ -17,12 +17,12 @@ namespace WebGentle_BookStore.Controllers
         {
             _bookRepository = bookRepository;
         }
-        public ViewResult GetAllBooks()
+        public async Task<ViewResult> GetAllBooks()
         {
             Title = "All Books";
             // Note: In URL Method Names, parameter names are NOT CASE SESITIVE
             //http://localhost:58860/book/getAllbooks      {controller}/{Method}
-            var data=_bookRepository.GetAllBooks();
+            var data=await _bookRepository.GetAllBooks();
 
          
             return View(data);
@@ -44,16 +44,21 @@ namespace WebGentle_BookStore.Controllers
             //  http://localhost:58860/book/searchbooks?bookName=Mvc&authorName=Nitish   {controller}/{Method}?bookName=value&authorName=value
             return _bookRepository.SearchBooks(bookName, authorName);
         }
-        public ViewResult AddNewBook()
+        public ViewResult AddNewBook(bool isSuccess=false,int bookId=0)
         {
+            ViewBag.isSuccess = isSuccess;
+            ViewBag.bookId = bookId;
             Title = "Add Book";
             return View();
         }
         [HttpPost]
-        public ViewResult AddNewBook(BookModel bookmodel)
+        public async Task<IActionResult> AddNewBook(BookModel bookmodel)
         {
-            _bookRepository.AddNewBook(bookmodel);
-          
+            int id= await _bookRepository.AddNewBook(bookmodel);
+          if(id>0)
+         {
+                return RedirectToAction(nameof(AddNewBook),new { isSuccess=true,bookId=id});
+            }
             return View();
         }
 

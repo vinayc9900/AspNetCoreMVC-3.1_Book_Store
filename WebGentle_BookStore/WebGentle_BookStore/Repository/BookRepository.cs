@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,7 +15,7 @@ namespace WebGentle_BookStore.Repository
         {
             _context = context;
         }
-        public int AddNewBook(BookModel bookModel)
+        public async Task<int> AddNewBook(BookModel bookModel)
         {
             var newBook = new Books() {
 
@@ -23,18 +24,37 @@ namespace WebGentle_BookStore.Repository
                 Description = bookModel.Description,
                 TotalPages = bookModel.TotalPages,
                 Category = bookModel.Category,
-                CreatedOn = DateTime.UtcNow,
-                UpdatedOn = DateTime.UtcNow
+                CreatedOn = DateTime.Now,
+                UpdatedOn = DateTime.Now
                
             };
-            _context.Books.Add(newBook);
-            _context.SaveChanges();
+            await _context.Books.AddAsync(newBook);
+            await _context.SaveChangesAsync();
             return newBook.Id;
 
         }
-        public List<BookModel>GetAllBooks()
+        public async Task<List<BookModel>> GetAllBooks()
         {
-            return DataSource();
+            var books = new List<BookModel>();
+           
+            var allbooks = await _context.Books.ToListAsync();
+            if(allbooks?.Any()==true)
+            {
+                foreach(var b in allbooks)
+                {   // convert db data to Bookmodel
+                    books.Add(new BookModel()
+                    {
+                        Author = b.Author,
+                        Category=b.Category,
+                        Description=b.Description,
+                        Id=b.Id,
+                        Language=b.Language,
+                        Title=b.Title,
+                        TotalPages=b.TotalPages
+                    });
+                }
+            }
+            return books;
         }
         public BookModel BookById(int id)
         {
