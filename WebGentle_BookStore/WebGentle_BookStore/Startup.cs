@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
@@ -9,6 +10,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using WebGentle_BookStore.Data;
+using WebGentle_BookStore.Repository;
 
 namespace WebGentle_BookStore
 {
@@ -20,9 +23,14 @@ namespace WebGentle_BookStore
         {
           //  services.AddMvc(); // Tells that we are adding MVC To Application
             services.AddControllersWithViews();
+            services.AddDbContext<BookStoreContext>(
+                options=>options.UseSqlServer("Server=.\\SQLEXPRESS;Database=BookStore;Integrated Security=True;"));
+
             #if DEBUG   // Only apply for Development Environment
             services.AddRazorPages().AddRazorRuntimeCompilation();//For  Razor file compilation 
-            #endif
+             #endif
+
+            services.AddScoped<BookRepository, BookRepository>(); //Dependency Injection
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

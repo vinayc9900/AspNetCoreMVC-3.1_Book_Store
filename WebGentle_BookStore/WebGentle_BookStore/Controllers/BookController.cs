@@ -13,9 +13,9 @@ namespace WebGentle_BookStore.Controllers
         private readonly BookRepository _bookRepository=null;
         [ViewData]  //View Data Attribute
         public string Title { get; set; }
-        public BookController()
+        public BookController(BookRepository bookRepository)
         {
-            _bookRepository = new BookRepository();
+            _bookRepository = bookRepository;
         }
         public ViewResult GetAllBooks()
         {
@@ -52,6 +52,7 @@ namespace WebGentle_BookStore.Controllers
         [HttpPost]
         public ViewResult AddNewBook(BookModel bookmodel)
         {
+            _bookRepository.AddNewBook(bookmodel);
           
             return View();
         }
