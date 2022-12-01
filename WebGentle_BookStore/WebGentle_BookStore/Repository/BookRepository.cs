@@ -24,6 +24,7 @@ namespace WebGentle_BookStore.Repository
                 Description = bookModel.Description,
                 TotalPages = bookModel.TotalPages.HasValue ? bookModel.TotalPages.Value : 0,
                 Category = bookModel.Category,
+                Language=bookModel.Language,
                 CreatedOn = DateTime.Now,
                 UpdatedOn = DateTime.Now
                

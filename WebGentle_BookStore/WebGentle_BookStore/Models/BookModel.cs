@@ -8,6 +8,9 @@ namespace WebGentle_BookStore.Models
 {
     public class BookModel
     {
+        //[DataType(DataType.DateTime)] // Try other Data types like Date,EmailAddress etc
+        //[Display(Name ="Choose the Date and Time")]
+        //public string MyField { get; set; }
         public int Id { get; set; }
         [StringLength(100,MinimumLength =5)]
         [Required(ErrorMessage ="Please enter your Book Title")]
@@ -20,6 +23,7 @@ namespace WebGentle_BookStore.Models
         [Display(Name ="Total Pages of Book")]
         public int? TotalPages { get; set; }
         public string Category { get; set; }
+        [Required(ErrorMessage ="Please select Laguage for your Book")]
         public string Language { get; set; }
     }
 }

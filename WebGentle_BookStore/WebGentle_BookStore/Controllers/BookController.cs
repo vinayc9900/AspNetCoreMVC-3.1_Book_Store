@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -46,10 +47,32 @@ namespace WebGentle_BookStore.Controllers
         }
         public ViewResult AddNewBook(bool isSuccess=false,int bookId=0)
         {
+            //// For Dropdown default selection Pass the model in view
+            var model = new BookModel()
+            {
+                //Language = "English"
+               // Language="2"  // It is for LanguageModel class selectListItem by Id 
+
+            };
+
+            //Addig List to <Select> from Controller
+            //ViewBag.Language = new SelectList(new List<string>() {"English","Kannada","Hindi"});
+            //ViewBag.Language = new SelectList(getLanguage(), "Id", "Text");
+
+            //ViewBag.Language = getLanguage().Select(x => new SelectListItem()
+            //{
+
+            //    Text = x.Text,
+            //    Value=x.Id.ToString()
+
+            //}).ToList();
+
+            ViewBag.Language = getLanguage1();
+
             ViewBag.isSuccess = isSuccess;
-            ViewBag.bookId = bookId;
+            ViewBag.bookId = bookId; 
             Title = "Add Book";
-            return View();
+            return View(model); 
         }
         [HttpPost]
         public async Task<IActionResult> AddNewBook(BookModel bookmodel)
@@ -62,8 +85,35 @@ namespace WebGentle_BookStore.Controllers
                     return RedirectToAction(nameof(AddNewBook), new { isSuccess = true, bookId = id });
                 }
             }
-         
+
+            // ViewBag.Language = new SelectList(new List<string>() { "English", "Kannada", "Hindi" });
+            //ViewBag.Language = new SelectList(getLanguage(), "Id", "Text");
+            ViewBag.Language = getLanguage1();
+            ModelState.AddModelError("", "This is my Custom error message"); // it Displays along with Validation summary
             return View();
+        }
+
+        private List<LanguageModel> getLanguage() 
+        {
+        
+        return new List<LanguageModel>(){
+
+                new LanguageModel() { Id=1,Text="Hindi"},
+                new LanguageModel() { Id = 2, Text = "English" },
+                new LanguageModel() { Id = 3, Text = "Kannada" },
+                new LanguageModel() { Id = 4, Text = "French" }
+            };
+        }
+
+        private List<SelectListItem> getLanguage1()
+        {
+            return new List<SelectListItem>() {
+                new SelectListItem(){Text="Hindi",Value="1"},
+                 new SelectListItem(){Text="English",Value="2",Disabled=true},
+                  new SelectListItem(){Text="Kannada",Value="3"},
+                   new SelectListItem(){Text="French",Value="4",Selected=true}
+            };
+           
         }
 
     }

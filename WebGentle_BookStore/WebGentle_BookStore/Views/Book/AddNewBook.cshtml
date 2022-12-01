@@ -1,20 +1,45 @@
 ﻿@model BookModel
 
-
-<div class="container">
-    <h3 class="display-4">Add New Book</h3>
-    @if (ViewBag.isSuccess==true)
-    {
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>Congratulations!  </strong> You have added New Book Successfully..<br/>
-              Click <a asp-controller="Book" asp-action="GetBook" asp-route-id="@ViewBag.bookId"> here</a> to view details.
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    }
+<div>
+    <div class="container">
+        <h4 class="display-4">Add New Book</h4>
+        @if (ViewBag.isSuccess == true)
+        {
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Congratulations!  </strong> You have added New Book Successfully..<br />
+                Click <a asp-controller="Book" asp-action="GetBook" asp-route-id="@ViewBag.bookId"> here</a> to view details.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        }
 
     <form method="post" asp-action="AddNewBook" asp-controller="Book">
+
+        @*<div asp-validation-summary="All" class="text-danger"></div>*@
+
+        <div class="form-group">
+            <label asp-for="Language"></label>
+            <!--<select asp-for="Language" class="form-control">
+                <option value="">Please choose Language</option>
+                <option value="English">English (Global Language)</option>-->
+                @*<option value="English" selected>English</option> // Default Selected*@
+                <!--<option value="Kannada">Kannada (State Language)</option>
+                <option value="Hindi">Hindi (National Language)</option>
+            </select>-->
+
+            @*Dropdown values using selectList*@
+        <select asp-for="Language" class="form-control" asp-items="ViewBag.Language">
+            <option value="">Please choose Language</option>
+        </select>
+            <span asp-validation-for="Language" class="text-danger"></span>
+        </div>
+        @*client side validation using 'required' attribute
+            <div class="form-group">
+            <label asp-for="MyField"></label>
+            <input asp-for="MyField" class="form-control" required/>
+            <span asp-validation-for="MyField" class="text-danger"></span>
+        </div>*@
         <div class="form-group">
             <label asp-for="Title"></label>
             <input asp-for="Title" class="form-control" />
@@ -32,13 +57,13 @@
         </div>
         <div class="form-group">
             <label asp-for="TotalPages"></label>
-            <input asp-for="TotalPages" class="form-control" /> 
+            <input asp-for="TotalPages" class="form-control" />
             <span asp-validation-for="TotalPages" class="text-danger"></span>
         </div>
         <div class="form-group">
             <input type="submit" class="brn btn-primary" value="Add Book" />
         </div>
     </form>
+    </div>
 </div>
-
 
