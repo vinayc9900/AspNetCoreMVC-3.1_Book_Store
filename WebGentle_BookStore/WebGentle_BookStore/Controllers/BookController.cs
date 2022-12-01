@@ -69,7 +69,7 @@ namespace WebGentle_BookStore.Controllers
             ViewBag.isSuccess = isSuccess;
             ViewBag.bookId = bookId; 
             Title = "Add Book";
-            return View(model); 
+            return View(model); //pass model to select default value for selectList & selectListItem
         }
         [HttpPost]
         public async Task<IActionResult> AddNewBook(BookModel bookmodel)
@@ -86,6 +86,7 @@ namespace WebGentle_BookStore.Controllers
             // ViewBag.Language = new SelectList(new List<string>() { "English", "Kannada", "Hindi" });
             //ViewBag.Language = new SelectList(getLanguage(), "Id", "Text");
             ViewBag.Language = getLanguage1();
+
             ModelState.AddModelError("", "This is my Custom error message"); // it Displays along with Validation summary
             return View();
         }
@@ -103,26 +104,26 @@ namespace WebGentle_BookStore.Controllers
         }
 
         private List<SelectListItem> getLanguage1()
-        {    
+        {
             // Use Grouping
-            var group1 = new SelectListGroup() { Name = "Group1" };
-            var group2 = new SelectListGroup() { Name = "Group2" };
-            var group3 = new SelectListGroup() { Name = "Group3" };
+            //var group1 = new SelectListGroup() { Name = "Group1" };
+            //var group2 = new SelectListGroup() { Name = "Group2" };
+            //var group3 = new SelectListGroup() { Name = "Group3", Disabled = true };
 
-            return new List<SelectListItem>() {
-                new SelectListItem(){Text="Hindi",Value="1",Group=group1},
-                 new SelectListItem(){Text="English",Value="2",Group=group1},
-                  new SelectListItem(){Text="Kannada",Value="3",Group=group2},
-                   new SelectListItem(){Text="French",Value="4",Group=group2},
-                     new SelectListItem(){Text="Telugu",Value="5",Group=group3},
-                   new SelectListItem(){Text="Tamil",Value="6",Group=group3}
-            };
             //return new List<SelectListItem>() {
-            //    new SelectListItem(){Text="Hindi",Value="1"},
-            //     new SelectListItem(){Text="English",Value="2",Disabled=true},
-            //      new SelectListItem(){Text="Kannada",Value="3"},
-            //       new SelectListItem(){Text="French",Value="4",Selected=true}
+            //    new SelectListItem(){Text="Hindi",Value="1",Group=group1},
+            //     new SelectListItem(){Text="English",Value="2",Group=group1},
+            //      new SelectListItem(){Text="Kannada",Value="3",Group=group2,Selected=true},
+            //       new SelectListItem(){Text="French",Value="4",Group=group2},
+            //         new SelectListItem(){Text="Telugu",Value="5",Group=group3},
+            //       new SelectListItem(){Text="Tamil",Value="6",Group=group3}
             //};
+            return new List<SelectListItem>() {
+                new SelectListItem(){Text="Hindi",Value="1"},
+                 new SelectListItem(){Text="English",Value="2",Disabled=true},
+                  new SelectListItem(){Text="Kannada",Value="3"},
+                   new SelectListItem(){Text="French",Value="4",Selected=true}
+            };
 
         }
 

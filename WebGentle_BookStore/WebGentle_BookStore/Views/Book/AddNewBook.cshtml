@@ -1,4 +1,5 @@
-﻿@model BookModel
+﻿@using WebGentle_BookStore.Enums
+@model BookModel
 
 <div>
     <div class="container">
@@ -19,51 +20,66 @@
         @*<div asp-validation-summary="All" class="text-danger"></div>*@
 
         <div class="form-group">
-            <label asp-for="Language"></label>
+            @*<label asp-for="Language"></label>*@
             <!--<select asp-for="Language" class="form-control">
-                <option value="">Please choose Language</option>
-                <option value="English">English (Global Language)</option>-->
-                @*<option value="English" selected>English</option> // Default Selected*@
-                <!--<option value="Kannada">Kannada (State Language)</option>
-                <option value="Hindi">Hindi (National Language)</option>
-            </select>-->
+    <option value="">Please choose Language</option>
+    <option value="English">English (Global Language)</option>-->
+            @*<option value="English" selected>English</option> // Default Selected*@
+            <!--<option value="Kannada">Kannada (State Language)</option>
+    <option value="Hindi">Hindi (National Language)</option>
+     </select>-->
 
-            @*Dropdown values using selectList*@
-        <select asp-for="Language" class="form-control" asp-items="ViewBag.Language">
+            @*Dropdown values using selectList,selectListItem,SelectListGroup*@
+            <label asp-for="Language"></label>
+            <select asp-for="Language" class="form-control" asp-items="ViewBag.Language">
+                <option value="">Please choose Language</option>
+            </select>
+            <span asp-validation-for="Language" class="text-danger"></span>
+
+            @*Dropdown values using Enum *@
+            @*<label asp-for="EnumLanguage"></label>
+            <select asp-for="EnumLanguage" class="form-control" asp-items="Html.GetEnumSelectList<EnumLanguage>()" >
+                <option value="">Please choose Language</option>
+            </select>
+            <span asp-validation-for="EnumLanguage" class="text-danger"></span>*@
+
+            @*Dropdown values using MultipleLanguageSelect
+        <label asp-for="MultiLanguage"></label>
+        <select asp-for="MultiLanguage" class="form-control" asp-items="ViewBag.Language" multiple>
             <option value="">Please choose Language</option>
         </select>
-            <span asp-validation-for="Language" class="text-danger"></span>
+        <span asp-validation-for="MultiLanguage" class="text-danger"></span>*@
         </div>
-        @*client side validation using 'required' attribute
+    @*client side validation using 'required' attribute
             <div class="form-group">
             <label asp-for="MyField"></label>
             <input asp-for="MyField" class="form-control" required/>
             <span asp-validation-for="MyField" class="text-danger"></span>
         </div>*@
-        <div class="form-group">
-            <label asp-for="Title"></label>
-            <input asp-for="Title" class="form-control" />
-            <span asp-validation-for="Title" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="Author"></label>
-            <input asp-for="Author" class="form-control" />
-            <span asp-validation-for="Author" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="Description"></label>
-            <textarea asp-for="Description" class="form-control"></textarea>
-            <span asp-validation-for="Description" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="TotalPages"></label>
-            <input asp-for="TotalPages" class="form-control" />
-            <span asp-validation-for="TotalPages" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <input type="submit" class="brn btn-primary" value="Add Book" />
-        </div>
-    </form>
+    <div class="form-group">
+        <label asp-for="Title"></label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
     </div>
+    <div class="form-group">
+        <label asp-for="Author"></label>
+        <input asp-for="Author" class="form-control" />
+        <span asp-validation-for="Author" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="TotalPages"></label>
+        <input asp-for="TotalPages" class="form-control" />
+        <span asp-validation-for="TotalPages" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" class="brn btn-primary" value="Add Book" />
+    </div>
+    </form>
+</div>
 </div>
 

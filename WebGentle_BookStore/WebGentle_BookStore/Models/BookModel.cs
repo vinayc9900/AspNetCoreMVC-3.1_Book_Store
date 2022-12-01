@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using WebGentle_BookStore.Enums;
 
 namespace WebGentle_BookStore.Models
 {
@@ -25,5 +26,11 @@ namespace WebGentle_BookStore.Models
         public string Category { get; set; }
         [Required(ErrorMessage ="Please select Laguage for your Book")]
         public string Language { get; set; }
+
+        [Required(ErrorMessage = "Please select Laguage for your Book")]
+        public EnumLanguage EnumLanguage { get; set; }
+
+        [Required(ErrorMessage = "Please select Laguages for your Book")]
+        public List<string> MultiLanguage { get; set; }
     }
 }
