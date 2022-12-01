@@ -32,8 +32,6 @@ namespace WebGentle_BookStore.Controllers
         [Route("book-details/{id}",Name="bookDetailsRoute")] 
         public async Task<ViewResult> GetBook(int id)
         {   
-
-           
             //http://localhost:58860/book/getbook/2  {controller}/{Method}/{id}
             var data = await _bookRepository.BookById(id);
             Title = "Book Info- " + data.Title;
@@ -61,7 +59,6 @@ namespace WebGentle_BookStore.Controllers
 
             //ViewBag.Language = getLanguage().Select(x => new SelectListItem()
             //{
-
             //    Text = x.Text,
             //    Value=x.Id.ToString()
 
@@ -106,14 +103,27 @@ namespace WebGentle_BookStore.Controllers
         }
 
         private List<SelectListItem> getLanguage1()
-        {
+        {    
+            // Use Grouping
+            var group1 = new SelectListGroup() { Name = "Group1" };
+            var group2 = new SelectListGroup() { Name = "Group2" };
+            var group3 = new SelectListGroup() { Name = "Group3" };
+
             return new List<SelectListItem>() {
-                new SelectListItem(){Text="Hindi",Value="1"},
-                 new SelectListItem(){Text="English",Value="2",Disabled=true},
-                  new SelectListItem(){Text="Kannada",Value="3"},
-                   new SelectListItem(){Text="French",Value="4",Selected=true}
+                new SelectListItem(){Text="Hindi",Value="1",Group=group1},
+                 new SelectListItem(){Text="English",Value="2",Group=group1},
+                  new SelectListItem(){Text="Kannada",Value="3",Group=group2},
+                   new SelectListItem(){Text="French",Value="4",Group=group2},
+                     new SelectListItem(){Text="Telugu",Value="5",Group=group3},
+                   new SelectListItem(){Text="Tamil",Value="6",Group=group3}
             };
-           
+            //return new List<SelectListItem>() {
+            //    new SelectListItem(){Text="Hindi",Value="1"},
+            //     new SelectListItem(){Text="English",Value="2",Disabled=true},
+            //      new SelectListItem(){Text="Kannada",Value="3"},
+            //       new SelectListItem(){Text="French",Value="4",Selected=true}
+            //};
+
         }
 
     }
