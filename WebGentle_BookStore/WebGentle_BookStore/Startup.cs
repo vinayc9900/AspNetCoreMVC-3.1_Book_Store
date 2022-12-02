@@ -27,7 +27,12 @@ namespace WebGentle_BookStore
                 options=>options.UseSqlServer("Server=.\\SQLEXPRESS;Database=BookStore;Integrated Security=True;"));
 
             #if DEBUG   // Only apply for Development Environment
-            services.AddRazorPages().AddRazorRuntimeCompilation();//For  Razor file compilation 
+             services.AddRazorPages().AddRazorRuntimeCompilation();//For  Razor file compilation 
+
+            //plz dont use below code for 'Production Environment' bcz it disabled client-side validation 
+            //services.AddRazorPages().AddRazorRuntimeCompilation().AddViewOptions(options => {
+            //    options.HtmlHelperOptions.ClientValidationEnabled = false; // now it will not do client-side validation
+            //}) ; 
              #endif
 
             services.AddScoped<BookRepository, BookRepository>(); //Dependency Injection

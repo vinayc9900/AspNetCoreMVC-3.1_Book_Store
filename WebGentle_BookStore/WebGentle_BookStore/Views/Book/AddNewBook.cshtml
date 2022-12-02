@@ -29,11 +29,12 @@
 
                 <label asp-for="Language"></label>
                 <select asp-for="Language" class="form-control">
-                 <option value="">Please choose Language</option>
-                <option value="English" selected>English (Global Language)</option> // Default Selected
-                <option value="Kannada">Kannada (State Language)</option>
-                <option value="Hindi">Hindi (National Language)</option>
+                    <option value="">Please choose Language</option>
+                    <option value="English" selected>English (Global Language)</option> // Default Selected
+                    <option value="Kannada">Kannada (State Language)</option>
+                    <option value="Hindi">Hindi (National Language)</option>
                 </select>
+                <span asp-validation-for="Language" class="text-danger"></span>
             </div>
             @*Dropdown values using selectList,selectListItem,SelectListGroup*@
 

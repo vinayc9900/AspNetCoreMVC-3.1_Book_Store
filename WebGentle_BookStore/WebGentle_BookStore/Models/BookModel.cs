@@ -30,7 +30,7 @@ namespace WebGentle_BookStore.Models
         [Display(Name ="Total Pages of Book")]
         public int? TotalPages { get; set; }
         public string Category { get; set; }
-        [Required(ErrorMessage = "Please select Laguage for your Book")]
+        [Required(ErrorMessage = "Please select Language for your Book")]
         public string Language { get; set; }
        
 
