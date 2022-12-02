@@ -64,7 +64,7 @@ namespace WebGentle_BookStore.Controllers
 
             //}).ToList();
 
-            ViewBag.Language = getLanguage1();
+            //ViewBag.Language = getLanguage1();
 
             ViewBag.isSuccess = isSuccess;
             ViewBag.bookId = bookId; 
@@ -74,18 +74,20 @@ namespace WebGentle_BookStore.Controllers
         [HttpPost]
         public async Task<IActionResult> AddNewBook(BookModel bookmodel)
         {
-           if(ModelState.IsValid)
+            //var errors = ModelState.Values.SelectMany(v => v.Errors);
+            if (ModelState.IsValid)
             {
                 int id = await _bookRepository.AddNewBook(bookmodel);
                 if (id > 0)
                 {
                     return RedirectToAction(nameof(AddNewBook), new { isSuccess = true, bookId = id });
                 }
+               
             }
 
             // ViewBag.Language = new SelectList(new List<string>() { "English", "Kannada", "Hindi" });
             //ViewBag.Language = new SelectList(getLanguage(), "Id", "Text");
-            ViewBag.Language = getLanguage1();
+            //ViewBag.Language = getLanguage1();
 
             ModelState.AddModelError("", "This is my Custom error message"); // it Displays along with Validation summary
             return View();
