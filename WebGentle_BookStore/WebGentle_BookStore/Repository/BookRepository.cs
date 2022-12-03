@@ -74,11 +74,9 @@ namespace WebGentle_BookStore.Repository
         public async Task<BookModel> BookById(int id)
         {
             var book =await  _context.Books.FindAsync(id);
-
-            // _context.Books.Where(x => x.Id == id).Select(book=>new BookModel()
             if (book != null)
             {
-                var bookDetails = new BookModel()
+                return await _context.Books.Where(x => x.Id == id).Select(book => new BookModel()
                 {
                     Author = book.Author,
                     Category = book.Category,
@@ -90,15 +88,19 @@ namespace WebGentle_BookStore.Repository
                     CoverImageUrl = book.CoverImageUrl,
                     Gallery = book.bookGallery.Select(x => new GalleryModel()
                     {
-                        Id=x.Id,
-                        Name=x.Name,
-                        Url=x.Url
+                        Id = x.Id,
+                        Name = x.Name,
+                        Url = x.Url
                     }).ToList()
-                };
 
-               return bookDetails;
+                }).FirstOrDefaultAsync();
             }
-            return null;
+            else
+            {
+                return null;
+            }
+
+          
         }
         public List<BookModel> SearchBooks(string title,string authorName)
         {
