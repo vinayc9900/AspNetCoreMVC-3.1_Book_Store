@@ -36,13 +36,18 @@ namespace WebGentle_BookStore.Models
 
         [Display(Name ="Choose the cover photo of your book")]
         [Required]
-        public IFormFile CoverPhoto { get; set; }
+        public IFormFile CoverPhoto { get; set; }//Single Image upload
         public string CoverImageUrl { get; set; }
-       
 
-        
+        [Display(Name = "Choose the Gallery images of your book")]
+        [Required]
+        public IFormFileCollection GalleryFiles { get; set; } //Multiple Image upload
+        public List<GalleryModel> Gallery { get; set; }
 
-       
+
+
+
+
         //[Required(ErrorMessage = "Please select Laguage for your Book")]
         //public EnumLanguage EnumLanguage { get; set; }
 

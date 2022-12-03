@@ -15,7 +15,7 @@ namespace WebGentle_BookStore.Data
 
         }
         public DbSet<Books> Books { get; set; }
-  
+        public DbSet<BookGallery> BookGallery { get; set; }
 
     }
 }

@@ -19,6 +19,8 @@ namespace WebGentle_BookStore.Data
         public DateTime? CreatedOn { get; set; }
         public DateTime? UpdatedOn { get; set; }
 
+        //For One-Many Relationship
+        public ICollection<BookGallery> bookGallery { get; set; }
        
     }
     

@@ -31,6 +31,17 @@ namespace WebGentle_BookStore.Repository
                 
                
             };
+
+            newBook.bookGallery = new List<BookGallery>();
+            foreach(var file in bookModel.Gallery)
+            {
+                newBook.bookGallery.Add(new BookGallery()
+                {
+                    Name=file.Name,
+                    Url=file.Url
+                });
+            }
+
             await _context.Books.AddAsync(newBook);
             await _context.SaveChangesAsync();
             return newBook.Id;
@@ -63,7 +74,7 @@ namespace WebGentle_BookStore.Repository
         public async Task<BookModel> BookById(int id)
         {
             var book =await  _context.Books.FindAsync(id);
-            //_context.Books.Where(x => x.Id == id).FirstOrDefaultAsync();
+           // _context.Books.Where(x => x.Id == id).FirstOrDefaultAsync();
             if(book!=null)
             {
                 var bookDetails = new BookModel()
@@ -75,8 +86,15 @@ namespace WebGentle_BookStore.Repository
                     Language = book.Language,
                     Title = book.Title,
                     TotalPages = book.TotalPages,
-                    CoverImageUrl=book.CoverImageUrl
+                    CoverImageUrl = book.CoverImageUrl,
+                    Gallery = book.bookGallery.Select(x => new GalleryModel()
+                    {
+                        Id=x.Id,
+                        Name=x.Name,
+                        Url=x.Url
+                    }).ToList()
                 };
+
                 return bookDetails;
             }
             return null;
