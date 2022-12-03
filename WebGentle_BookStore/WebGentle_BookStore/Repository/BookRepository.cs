@@ -27,8 +27,8 @@ namespace WebGentle_BookStore.Repository
                 Language=bookModel.Language,
                 CoverImageUrl=bookModel.CoverImageUrl,
                 CreatedOn = DateTime.Now,
-                UpdatedOn = DateTime.Now
-                
+                UpdatedOn = DateTime.Now,
+                BookPdfUrl=bookModel.BookPdfUrl
                
             };
 
@@ -91,7 +91,8 @@ namespace WebGentle_BookStore.Repository
                         Id = x.Id,
                         Name = x.Name,
                         Url = x.Url
-                    }).ToList()
+                    }).ToList(),
+                    BookPdfUrl=book.BookPdfUrl
 
                 }).FirstOrDefaultAsync();
             }

@@ -107,7 +107,12 @@ namespace WebGentle_BookStore.Controllers
 
                 }
 
+                if (bookmodel.BookPdf != null)
+                {
+                    string folder = "books/pdf/";
+                    bookmodel.BookPdfUrl = await UploadImage(folder, bookmodel.BookPdf);
 
+                }
                 int id = await _bookRepository.AddNewBook(bookmodel);
                 if (id > 0)
                 {
