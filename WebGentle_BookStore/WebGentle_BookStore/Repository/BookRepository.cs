@@ -74,8 +74,9 @@ namespace WebGentle_BookStore.Repository
         public async Task<BookModel> BookById(int id)
         {
             var book =await  _context.Books.FindAsync(id);
-           // _context.Books.Where(x => x.Id == id).FirstOrDefaultAsync();
-            if(book!=null)
+
+            // _context.Books.Where(x => x.Id == id).Select(book=>new BookModel()
+            if (book != null)
             {
                 var bookDetails = new BookModel()
                 {
@@ -95,7 +96,7 @@ namespace WebGentle_BookStore.Repository
                     }).ToList()
                 };
 
-                return bookDetails;
+               return bookDetails;
             }
             return null;
         }
