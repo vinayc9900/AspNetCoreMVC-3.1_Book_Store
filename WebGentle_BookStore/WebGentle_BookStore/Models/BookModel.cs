@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using WebGentle_BookStore.Enums;
 using WebGentle_BookStore.Data;
 using WebGentle_BookStore.Helpers;
+using Microsoft.AspNetCore.Http;
 
 namespace WebGentle_BookStore.Models
 {
@@ -32,6 +33,11 @@ namespace WebGentle_BookStore.Models
         public string Category { get; set; }
         [Required(ErrorMessage = "Please select Language for your Book")]
         public string Language { get; set; }
+
+        [Display(Name ="Choose the cover photo of your book")]
+        [Required]
+        public IFormFile CoverPhoto { get; set; }
+        public string CoverImageUrl { get; set; }
        
 
         

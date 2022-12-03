@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using WebGentle_BookStore.Models;
@@ -12,11 +14,13 @@ namespace WebGentle_BookStore.Controllers
     public class BookController : Controller
     {
         private readonly BookRepository _bookRepository=null;
+        private readonly IWebHostEnvironment _webhostEnvironment;
         [ViewData]  //View Data Attribute
         public string Title { get; set; }
-        public BookController(BookRepository bookRepository)
+        public BookController(BookRepository bookRepository, IWebHostEnvironment webHostEnvironment)
         {
             _bookRepository = bookRepository;
+            _webhostEnvironment = webHostEnvironment;// for server path
         }
         public async Task<ViewResult> GetAllBooks()
         {
@@ -77,6 +81,16 @@ namespace WebGentle_BookStore.Controllers
             //var errors = ModelState.Values.SelectMany(v => v.Errors);
             if (ModelState.IsValid)
             {
+                if(bookmodel.CoverPhoto!=null)
+                {
+                    string folder = "books/cover/";
+                    folder += Guid.NewGuid().ToString()+"_"+bookmodel.CoverPhoto.FileName;
+                    string serverFolder = Path.Combine(_webhostEnvironment.WebRootPath, folder);
+                    bookmodel.CoverImageUrl = "/"+folder;
+                    await bookmodel.CoverPhoto.CopyToAsync(new FileStream(serverFolder, FileMode.Create));
+
+                }
+
                 int id = await _bookRepository.AddNewBook(bookmodel);
                 if (id > 0)
                 {

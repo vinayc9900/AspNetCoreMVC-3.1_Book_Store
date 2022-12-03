@@ -25,8 +25,10 @@ namespace WebGentle_BookStore.Repository
                 TotalPages = bookModel.TotalPages.HasValue ? bookModel.TotalPages.Value : 0,
                 Category = bookModel.Category,
                 Language=bookModel.Language,
+                CoverImageUrl=bookModel.CoverImageUrl,
                 CreatedOn = DateTime.Now,
                 UpdatedOn = DateTime.Now
+                
                
             };
             await _context.Books.AddAsync(newBook);
@@ -51,7 +53,8 @@ namespace WebGentle_BookStore.Repository
                         Id=b.Id,
                         Language = b.Language,
                         Title=b.Title,
-                        TotalPages=b.TotalPages
+                        TotalPages=b.TotalPages,
+                        CoverImageUrl=b.CoverImageUrl
                     });
                 }
             }
@@ -71,7 +74,8 @@ namespace WebGentle_BookStore.Repository
                     Id = book.Id,
                     Language = book.Language,
                     Title = book.Title,
-                    TotalPages = book.TotalPages
+                    TotalPages = book.TotalPages,
+                    CoverImageUrl=book.CoverImageUrl
                 };
                 return bookDetails;
             }
