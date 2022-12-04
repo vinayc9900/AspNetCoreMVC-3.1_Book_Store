@@ -71,6 +71,23 @@ namespace WebGentle_BookStore.Repository
             }
             return books;
         }
+        public async Task<List<BookModel>> GetTopBooksAsync()
+        {
+            
+            return await _context.Books
+                .Select(b=>new BookModel()
+                { 
+                        Author = b.Author,
+                        Category = b.Category,
+                        Description = b.Description,
+                        Id = b.Id,
+                        Language = b.Language,
+                        Title = b.Title,
+                        TotalPages = b.TotalPages,
+                        CoverImageUrl = b.CoverImageUrl
+                }).Take(5).ToListAsync();   
+          
+        }
         public async Task<BookModel> BookById(int id)
         {
             var book =await  _context.Books.FindAsync(id);
