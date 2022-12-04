@@ -1,13 +1,9 @@
 ﻿body {
-    
+    padding-bottom: 120px;
 }
 
 header, navbar {
     margin-top: 0px;
     height: 70px;
 }
-.fixed-bottom {
-   
-    
-    padding-top: 30px;
-} 
+

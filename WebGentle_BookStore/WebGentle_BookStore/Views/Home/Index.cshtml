@@ -37,52 +37,33 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-4">
-                        <div class="card">
-                            @*<div class="card-header">
+                        <div class="card mb-4 shadow-sm">
+                            @*<partial name="_bookThumbnail" model="new BookModel()" />*@
+                            @Html.Partial("_bookThumbnail", new BookModel())
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm">
+                            @*<partial name="_bookThumbnail" model="new BookModel()"/>*@
+                            @await Html.PartialAsync("_bookThumbnail", new BookModel())
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm">
+                            @*<partial name="_bookThumbnail" model="new BookModel()"/>*@
+                            @{
+                                Html.RenderPartial("_bookThumbnail", new BookModel());
+                            }
 
-                        </div>*@
-                            <p>Animation Books</p>
-                            <div class="card-body">
-                                <p class="card-text">
-                                    This is for Book info
-                                </p>
-                                
-                            </div>
-                            <div class="btn-group">
-                                <a href="#" class="btn btn-sm btn-outline-secondary">More..</a>
-                            </div>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="card">
-                            @*<div class="card-header">
-                           <p class="card-text">Old Books</p>
-                        </div>*@
-                            <p class="card-text">Old Books</p>
-                            <div class="card-body">
-                                <p>Book 1</p>
-                                <p>Book 2</p>
-                                <p>Book 3</p>
-                            </div>
-                            <div class="card-footer">
-                                <p>More Info...</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card">
-                            @*<div class="card-header">
-                         <p>New Books</p>
-                        </div>*@
-                            <p>New Books</p>
-                            <div class="card-body">
-                                <p>Book 1</p>
-                                <p>Book 2</p>
-                                <p>Book 3</p>
-                            </div>
-                            <div class="card-footer">
-                                <p>More Info...</p>
-                            </div>
+                        <div class="card mb-4 shadow-sm">
+                            @*<partial name="_bookThumbnail" model="new BookModel()"/>*@
+                            @{
+                                await Html.RenderPartialAsync("_bookThumbnail", new BookModel());
+                            }
+
                         </div>
                     </div>
                 </div>

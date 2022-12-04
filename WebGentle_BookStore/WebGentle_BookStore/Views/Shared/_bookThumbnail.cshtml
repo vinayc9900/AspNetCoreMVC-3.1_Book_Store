@@ -1,0 +1,26 @@
+﻿
+@model BookModel
+
+<img src="@(string.IsNullOrEmpty(Model.CoverImageUrl)? "/images/books/noimage.jpg":Model.CoverImageUrl)" class="img-thumbnail" style="max-height:160px;" />
+<div class="card-body">
+    <h3 class="card-title">@(string.IsNullOrEmpty(Model.Title)? "Name is not available":Model.Title)</h3>
+    <p class="card-text">@(string.IsNullOrEmpty(Model.Description)? "Description is not available":Model.Description)</p>
+
+    <div class="d-flex justify-content-between align-content-center">
+        <div class="btn-group">
+            @*<a href="/Book/GetBook/@book.Id" class="btn btn-sm btn-outline-secondary">View Details...</a>*@
+
+            <a asp-route="bookDetailsRoute" asp-route-id="@Model.Id"
+               class="btn btn-sm btn-outline-secondary">View Details...</a>
+
+            @*<a asp-controller="Book" asp-action="GetBook" asp-route-id="@book.Id" asp-fragment="similarBooks"
+                class="btn btn-sm btn-outline-secondary">View Details...</a>*@
+
+            @* We can Use Multiple parameters-  asp-route-id="@book.Id" ,   asp-route-bookName="@book.Title"
+                For multiple parameters use this -   asp-all-route-data="@parameters"
+
+            *@
+        </div>
+        <small class="text-muted">@(string.IsNullOrEmpty(Model.Author)? "NA":Model.Author)</small>
+    </div>
+</div>
