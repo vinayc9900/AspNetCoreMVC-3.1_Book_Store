@@ -71,7 +71,7 @@ namespace WebGentle_BookStore.Repository
             }
             return books;
         }
-        public async Task<List<BookModel>> GetTopBooksAsync()
+        public async Task<List<BookModel>> GetTopBooksAsync(int count)
         {
             
             return await _context.Books
@@ -85,7 +85,7 @@ namespace WebGentle_BookStore.Repository
                         Title = b.Title,
                         TotalPages = b.TotalPages,
                         CoverImageUrl = b.CoverImageUrl
-                }).Take(5).ToListAsync();   
+                }).Take(count).ToListAsync();   
           
         }
         public async Task<BookModel> BookById(int id)

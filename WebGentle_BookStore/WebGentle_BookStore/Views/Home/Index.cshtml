@@ -35,11 +35,45 @@
             <p big>Top Book using attribute</p>
 
             <div class="container">
-                                        
-                @*@await Component.InvokeAsync("TopBooks")*@ 
-                <vc:top-books></vc:top-books>
+                @*@await Component.InvokeAsync("TopBooks")*@
+                @*<vc:top-books></vc:top-books>*@
 
-               
+                @await Component.InvokeAsync("TopBooks", new { count = 4 })
+                @*<vc:top-books count="4"></vc:top-books>*@
+
+
+                <!--<div class="row">
+    <div class="col-md-4">
+        <div class="card mb-4 shadow-sm">-->
+                @*<partial name="_bookThumbnail" model="new BookModel()" />*@
+                <!--@Html.Partial("_bookThumbnail", new BookModel())
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card mb-4 shadow-sm">-->
+                @*<partial name="_bookThumbnail" model="new BookModel()" />*@
+                <!--@await Html.PartialAsync("_bookThumbnail", new BookModel())
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card mb-4 shadow-sm">-->
+                @*<partial name="_bookThumbnail" model="new BookModel()" />*@
+                <!--@{
+                Html.RenderPartial("_bookThumbnail", new BookModel());
+            }
+
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card mb-4 shadow-sm">-->
+                @*<partial name="_bookThumbnail" model="new BookModel()" />*@
+                <!--@{
+                    await Html.RenderPartialAsync("_bookThumbnail", new BookModel());
+                }
+
+            </div>
+        </div>
+    </div>-->
             </div>
         </div>
     </section>

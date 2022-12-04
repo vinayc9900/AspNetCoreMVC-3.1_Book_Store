@@ -82,13 +82,20 @@ namespace WebGentle_BookStore
 
             app.UseEndpoints(endpoints =>
             {
-
-                endpoints.MapDefaultControllerRoute();// Telling to Start with Controller
+                endpoints.MapControllers();
+               // endpoints.MapDefaultControllerRoute(); // Telling to Start with Default Controller
 
                 //endpoints.MapControllerRoute(   // Use while Working With anchor Tag Helper
-                //        name:"Default",
-                //        pattern:"bookApp/{controller=Home}/{action=Index}/{id?}"
+                //        name: "Default",
+                //        pattern: "{controller=Home}/{action=Index}/{id?}"
+                //        // pattern: "{controller}/{action}/{id?}/{name?}"
                 //    );
+
+                //endpoints.MapControllerRoute(   // conventional Routing
+                //        name: "AboutUs",
+                //        pattern:"about-us/{id?}", 
+                //        defaults: new {controller= "Home", action= "AboutUs" });
+
 
                 //endpoints.MapGet("/", async context =>   // MapGet can handle only Get Response 
                 //{
@@ -106,7 +113,7 @@ namespace WebGentle_BookStore
                 //   // }
                 //   // else
                 //   // await context.Response.WriteAsync(env.EnvironmentName);
-                  
+
                 //});
             });
             //app.UseEndpoints(endpoints =>

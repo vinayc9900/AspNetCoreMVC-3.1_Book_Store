@@ -8,6 +8,9 @@ using WebGentle_BookStore.Models;
 
 namespace WebGentle_BookStore.Controllers
 {
+   // [Route("[controller]/[action]")] // i.e Home/Index
+                                     // i.e Home/AboutUs
+                                     // i.e Home/ContactUs
     public class HomeController:Controller
     { 
         [ViewData]  //View Data Attribute
@@ -16,6 +19,10 @@ namespace WebGentle_BookStore.Controllers
         public string Title { get; set; }
         [ViewData]  //View Data Attribute
         public BookModel Book { get; set; }
+
+        [Route("")]  // will exeute with default controller & view i.e Home/Index
+     // [Route("~/")]  use ~/ symbol to override Previous/Existing Route
+                     // [Route("[controller]/[action]")]  // use current controller i.e Home/Index
         public ViewResult Index()
         {
             var obj = new { Id = 1, Name = "Vinay" };
@@ -37,19 +44,34 @@ namespace WebGentle_BookStore.Controllers
             return View();
         }
 
-        public ViewResult AboutUs()
+        // Attribute Routing
+
+        // [Route("about-us/{id}/{name}")]  //about-us/7/vinay
+        // [Route("about-us/{id}/test/{name}")] // about-us/5/test/vinay
+       // [Route("about-us")] // about-us?id=3&name=vinay
+        // [HttpGet("about-us",Name ="aboutus")]
+       // [Route("about-us", Name = "aboutus",Order =1)][HttpGet]
+       //[Route("about-us/{name:alpha}")] //accepts only char
+        [Route("about-us/{name:alpha:minlength(5)}")] //name minlength should be 5
+        public ViewResult AboutUs(string name)
         {
-            ViewData["FillName"] = "Anilkumar P";
-            // ViewData["Book"] = new BookModel() { Author = "Ashish", Id = 22 };
+            ViewData["FillName"] = "Anilkumar P";          
+           // ViewData["Book"] = new BookModel() { Author = "Ashish", Id = 22 };
             Book = new BookModel() { Id = 345, Author = "abhi" }; // Using [ViewData] Attribute
-            Title= "About Us";
-            return View();
+            Title= "About Us"; 
+            return View();   
         }
-        public ViewResult ContactUs()
+
+
+        // [Route("contact-us")] 
+        //[Route("contact-us",Name ="contactus")]
+        [Route("test/a{a}")]  //  /test/aVinay
+        public ViewResult ContactUs(string a) 
         {
             bookName = "Narnia 2"; // Assignig value to ViewData Property
             Title = "Contact Us";
             return View();
         }
+      
     }
 }

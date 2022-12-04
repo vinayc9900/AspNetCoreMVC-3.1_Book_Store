@@ -12,17 +12,22 @@ using WebGentle_BookStore.Repository;
 
 namespace WebGentle_BookStore.Controllers
 {
+    //[Route("[controller]/[action]")] // i.e Home/Index
+                                      // i.e Home/AboutUs
+                                     // i.e Home/ContactUs
     public class BookController : Controller
     {
         private readonly BookRepository _bookRepository=null;
         private readonly IWebHostEnvironment _webhostEnvironment;
         [ViewData]  //View Data Attribute
-        public string Title { get; set; }
+        public string Title { get; set; }  
         public BookController(BookRepository bookRepository, IWebHostEnvironment webHostEnvironment)
         {
             _bookRepository = bookRepository;
             _webhostEnvironment = webHostEnvironment;// for server path
         }
+       // [Route("~/allbooks")]  // ~/ will be used to override Prev/Existing Route
+        [Route("allbooks")]
         public async Task<ViewResult> GetAllBooks()
         {
             Title = "All Books";
@@ -34,7 +39,9 @@ namespace WebGentle_BookStore.Controllers
             return View(data);
             
         }
-        [Route("book-details/{id}",Name="bookDetailsRoute")] 
+
+        // [Route("~/book-details/{id:int}",Name ="bookDetailsRoute")] // with Constraints [id:int]
+        [Route("book-details/{id:int:min(1)}", Name = "bookDetailsRoute")]
         public async Task<ViewResult> GetBook(int id)
         {   
             //http://localhost:58860/book/getbook/2  {controller}/{Method}/{id}
@@ -48,6 +55,8 @@ namespace WebGentle_BookStore.Controllers
             //  http://localhost:58860/book/searchbooks?bookName=Mvc&authorName=Nitish   {controller}/{Method}?bookName=value&authorName=value
             return _bookRepository.SearchBooks(bookName, authorName);
         }
+
+      
         public ViewResult AddNewBook(bool isSuccess=false,int bookId=0)
         {
             //// For Dropdown default selection Pass the model in view
@@ -76,7 +85,9 @@ namespace WebGentle_BookStore.Controllers
             Title = "Add Book";
             return View(model); //pass model to select default value for selectList & selectListItem
         }
+      
         [HttpPost]
+
         public async Task<IActionResult> AddNewBook(BookModel bookmodel)
         {
             //var errors = ModelState.Values.SelectMany(v => v.Errors);

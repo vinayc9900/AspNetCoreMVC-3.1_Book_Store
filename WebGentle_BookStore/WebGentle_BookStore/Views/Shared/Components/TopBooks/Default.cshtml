@@ -1,33 +1,22 @@
-﻿@model 
-<div class="row">
-    <div class="col-md-4">
-        <div class="card mb-4 shadow-sm">
-            @*<partial name="_bookThumbnail" model="new BookModel()" />*@
-            @Html.Partial("_bookThumbnail", new BookModel())
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="card mb-4 shadow-sm">
-            @*<partial name="_bookThumbnail" model="new BookModel()" />*@
-            @await Html.PartialAsync("_bookThumbnail", new BookModel())
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="card mb-4 shadow-sm">
-            @*<partial name="_bookThumbnail" model="new BookModel()" />*@
-            @{
-            Html.RenderPartial("_bookThumbnail", new BookModel());
-            }
+﻿@model IEnumerable<BookModel>
 
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="card mb-4 shadow-sm">
-            @*<partial name="_bookThumbnail" model="new BookModel()" />*@
-            @{
-            await Html.RenderPartialAsync("_bookThumbnail", new BookModel());
-            }
 
-        </div>
-    </div>
-</div>
+                      <div class="row">
+                          @foreach(var book in Model)
+                          {
+                          <div class="col-md-4">
+                              <div class="card mb-4 shadow-sm">
+                                  <partial name="_bookThumbnail" model="book" />
+
+                                  @*@Html.Partial("_bookThumbnail", new BookModel())
+                                  @await Html.PartialAsync("_bookThumbnail", new BookModel())
+                                  @{
+                                  Html.RenderPartial("_bookThumbnail", new BookModel());
+                                  }
+                                  @{
+                                  await Html.RenderPartialAsync("_bookThumbnail", new BookModel());
+                                  }*@
+                              </div>
+                          </div>
+                          }
+                      </div>
