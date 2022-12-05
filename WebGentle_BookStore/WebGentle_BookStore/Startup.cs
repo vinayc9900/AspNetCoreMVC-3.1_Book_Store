@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
@@ -17,6 +18,11 @@ namespace WebGentle_BookStore
 {
     public class Startup
     {
+        private readonly IConfiguration _configuration;
+        public Startup(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
@@ -24,9 +30,10 @@ namespace WebGentle_BookStore
           //  services.AddMvc(); // Tells that we are adding MVC To Application
             services.AddControllersWithViews();
             services.AddDbContext<BookStoreContext>(
-                options=>options.UseSqlServer("Server=.\\SQLEXPRESS;Database=BookStore;Integrated Security=True;"));
-
-            #if DEBUG   // Only apply for Development Environment
+                //options=>options.UseSqlServer("Server=.\\SQLEXPRESS;Database=BookStore;Integrated Security=True;"));
+                options => options.UseSqlServer(_configuration.GetConnectionString("DefaultConnection")));
+           
+                #if DEBUG   // Only apply for Development Environment
              services.AddRazorPages().AddRazorRuntimeCompilation();//For  Razor file compilation 
 
             //plz dont use below code for 'Production Environment' bcz it disabled client-side validation 

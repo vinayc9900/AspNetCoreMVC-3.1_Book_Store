@@ -1,5 +1,11 @@
 ﻿@*@inject WebGentle_BookStore.Repository.IBookRepository _bookRepository*@
-@inject Microsoft.Extensions.Configuration.IConfiguration _configutaion
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration _configutaion
+@{ 
+    // var newBook = _configutaion.GetSection("NewAlert");
+    var newBookAlert = new NewBookAlertConfig();
+    _configutaion.Bind("NewAlert", newBookAlert);
+}
 <header>
     <div class="container">
         <nav class="navbar navbar-expand-sm  fixed-top bg-light shadow">
@@ -50,5 +56,16 @@
         </nav>
     </div>
 
-
 </header>
+@*@if (_configutaion.GetValue<bool>("NewAlert:DisplayNewBookAlert"))*@
+@*@if(newBook.GetValue<bool>("DisplayNewBookAlert"))*@
+@if(newBookAlert.DisplayNewBookAlert)
+{
+<div class="alert alert-info mt-4" role="alert">
+
+    @*@_configutaion["NewAlert:BookName"]*@
+    @*@(newBook.GetValue<string>("BookName"))*@
+    @newBookAlert.BookName
+</div>
+
+}

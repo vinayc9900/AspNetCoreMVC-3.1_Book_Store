@@ -55,10 +55,26 @@ namespace WebGentle_BookStore.Controllers
             Title = "Home";
 
             //Reading value from AppSettings.json
-            var result = configuration["AppName"]; // look AppSettings.json
-            var key1 = configuration["infoObj:key1"];
-            var key2 = configuration["infoObj:key2"];
-            var key3 = configuration["infoObj:key3:key3obj1"];
+            //var result = configuration.GetValue<bool>("NewAlert:DisplayNewBookAlert"); //return bool value
+            //var result1 = configuration["NewAlert:DisplayNewBookAlert"];  
+            //var bookName = configuration["NewAlert:BookName"];
+
+            //var result = configuration["AppName"]; 
+            //var key1 = configuration["infoObj:key1"];
+            //var key2 = configuration["infoObj:key2"];
+            //var key3 = configuration["infoObj:key3:key3obj1"];
+
+            // Using Getcollection
+            //var newBook = configuration.GetSection("NewAlert");
+            //var result1 = newBook.GetValue<bool>("DisplayNewBookAlert");
+            //var newBook = configuration.GetSection("NewAlert").GetValue<bool>("DisplayNewBookAlert");
+
+            // using Object Binding
+            var newBookAlert = new NewBookAlertConfig();
+            configuration.Bind("NewAlert", newBookAlert);
+            bool isDisplay = newBookAlert.DisplayNewBookAlert;
+            string bookName = newBookAlert.BookName;
+
             return View();
         }
 
