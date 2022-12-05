@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.SqlServer;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace WebGentle_BookStore.Data
 {
-    public class BookStoreContext:DbContext
+    public class BookStoreContext:IdentityDbContext
     {
         public BookStoreContext(DbContextOptions<BookStoreContext> options)
             :base(options)

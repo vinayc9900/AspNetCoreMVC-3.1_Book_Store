@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -35,7 +36,10 @@ namespace WebGentle_BookStore
             services.AddDbContext<BookStoreContext>(
                 //options=>options.UseSqlServer("Server=.\\SQLEXPRESS;Database=BookStore;Integrated Security=True;"));
                 options => options.UseSqlServer(_configuration.GetConnectionString("DefaultConnection")));
-           
+            
+            services.AddIdentity<IdentityUser, IdentityRole>()
+           .AddEntityFrameworkStores<BookStoreContext>();
+
                 #if DEBUG   // Only apply for Development Environment
              services.AddRazorPages().AddRazorRuntimeCompilation();//For  Razor file compilation 
 
@@ -47,6 +51,7 @@ namespace WebGentle_BookStore
 
            // services.AddScoped<BookRepository, BookRepository>();
             services.AddScoped<IBookRepository, BookRepository>(); //Dependency Injection
+            services.AddScoped<IAccountRepository, AccountRepository>();
             services.Configure<NewBookAlertConfig>(_configuration.GetSection("NewAlert"));
         }
 
@@ -61,6 +66,8 @@ namespace WebGentle_BookStore
 
             app.UseStaticFiles(); // For wwwroot static Directory
             app.UsePathBase("/css");// Reads the css/Site.css file
+            app.UseRouting();  // This must be Placed First Among all following End Points
+            app.UseAuthentication();
             //app.UseStaticFiles(new StaticFileOptions
             //{
             //    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "MyStaticFiles")),
@@ -90,7 +97,6 @@ namespace WebGentle_BookStore
             //    await next();
             //});
 
-            app.UseRouting();  // This must be Placed First Among all following End Points
 
             app.UseEndpoints(endpoints =>
             {

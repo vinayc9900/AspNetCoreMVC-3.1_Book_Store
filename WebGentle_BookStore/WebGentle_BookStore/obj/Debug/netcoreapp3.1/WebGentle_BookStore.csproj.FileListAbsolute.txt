@@ -23,8 +23,6 @@ D:\MVC Practice\BookStore\WebGentle_BookStore\WebGentle_BookStore\bin\Debug\netc
 D:\MVC Practice\BookStore\WebGentle_BookStore\WebGentle_BookStore\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Connections.Abstractions.dll
 D:\MVC Practice\BookStore\WebGentle_BookStore\WebGentle_BookStore\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.CookiePolicy.dll
 D:\MVC Practice\BookStore\WebGentle_BookStore\WebGentle_BookStore\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Cors.dll
-D:\MVC Practice\BookStore\WebGentle_BookStore\WebGentle_BookStore\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Cryptography.Internal.dll
-D:\MVC Practice\BookStore\WebGentle_BookStore\WebGentle_BookStore\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 D:\MVC Practice\BookStore\WebGentle_BookStore\WebGentle_BookStore\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.DataProtection.Abstractions.dll
 D:\MVC Practice\BookStore\WebGentle_BookStore\WebGentle_BookStore\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.DataProtection.dll
 D:\MVC Practice\BookStore\WebGentle_BookStore\WebGentle_BookStore\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.DataProtection.Extensions.dll
@@ -103,8 +101,6 @@ D:\MVC Practice\BookStore\WebGentle_BookStore\WebGentle_BookStore\bin\Debug\netc
 D:\MVC Practice\BookStore\WebGentle_BookStore\WebGentle_BookStore\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Hosting.Abstractions.dll
 D:\MVC Practice\BookStore\WebGentle_BookStore\WebGentle_BookStore\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Hosting.dll
 D:\MVC Practice\BookStore\WebGentle_BookStore\WebGentle_BookStore\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Http.dll
-D:\MVC Practice\BookStore\WebGentle_BookStore\WebGentle_BookStore\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Identity.Core.dll
-D:\MVC Practice\BookStore\WebGentle_BookStore\WebGentle_BookStore\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Identity.Stores.dll
 D:\MVC Practice\BookStore\WebGentle_BookStore\WebGentle_BookStore\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Localization.Abstractions.dll
 D:\MVC Practice\BookStore\WebGentle_BookStore\WebGentle_BookStore\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Localization.dll
 D:\MVC Practice\BookStore\WebGentle_BookStore\WebGentle_BookStore\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Logging.Configuration.dll
@@ -430,3 +426,9 @@ D:\MVC Practice\BookStore\WebGentle_BookStore\WebGentle_BookStore\obj\Debug\netc
 D:\MVC Practice\BookStore\WebGentle_BookStore\WebGentle_BookStore\obj\Debug\netcoreapp3.1\WebGentle_BookStore.genruntimeconfig.cache
 D:\MVC Practice\BookStore\WebGentle_BookStore\WebGentle_BookStore\obj\Debug\netcoreapp3.1\WebGentle_BookStore.csproj.AssemblyReference.cache
 D:\MVC Practice\BookStore\WebGentle_BookStore\WebGentle_BookStore\bin\Debug\netcoreapp3.1\appsettings.Production.json
+D:\MVC Practice\BookStore\WebGentle_BookStore\WebGentle_BookStore\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\MVC Practice\BookStore\WebGentle_BookStore\WebGentle_BookStore\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\MVC Practice\BookStore\WebGentle_BookStore\WebGentle_BookStore\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\MVC Practice\BookStore\WebGentle_BookStore\WebGentle_BookStore\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
+D:\MVC Practice\BookStore\WebGentle_BookStore\WebGentle_BookStore\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
+D:\MVC Practice\BookStore\WebGentle_BookStore\WebGentle_BookStore\obj\Debug\netcoreapp3.1\Razor\Views\Account\Signup.cshtml.g.cs

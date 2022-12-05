@@ -1,10 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "I2aUKO/C2E3b1lpYllauIueNYKPE3IQo1mRaznKgfTSDUy9+HAAuOxZDMrlNuV/7QvCD5vvWvtblwyb/WNPtRQ==",
+  "dgSpecHash": "UKjKR6mxbHje7myhDQCUP0Q8nF6+53u0Hs9f3jyppRmUBFCPlFz+VxxTm2h9zoh0ynrH7FOrNkAV/NX6msu0kQ==",
   "success": true,
   "projectFilePath": "D:\\MVC Practice\\BookStore\\WebGentle_BookStore\\WebGentle_BookStore\\WebGentle_BookStore.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\VINAY\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.8\\microsoft.aspnetcore.cryptography.internal.3.1.8.nupkg.sha512",
+    "C:\\Users\\VINAY\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\3.1.8\\microsoft.aspnetcore.cryptography.keyderivation.3.1.8.nupkg.sha512",
     "C:\\Users\\VINAY\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\VINAY\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\3.1.8\\microsoft.aspnetcore.identity.entityframeworkcore.3.1.8.nupkg.sha512",
     "C:\\Users\\VINAY\\.nuget\\packages\\microsoft.aspnetcore.mvc.razor.extensions\\3.1.30\\microsoft.aspnetcore.mvc.razor.extensions.3.1.30.nupkg.sha512",
     "C:\\Users\\VINAY\\.nuget\\packages\\microsoft.aspnetcore.mvc.razor.runtimecompilation\\3.1.30\\microsoft.aspnetcore.mvc.razor.runtimecompilation.3.1.30.nupkg.sha512",
     "C:\\Users\\VINAY\\.nuget\\packages\\microsoft.aspnetcore.razor\\2.2.0\\microsoft.aspnetcore.razor.2.2.0.nupkg.sha512",
@@ -35,6 +38,8 @@
     "C:\\Users\\VINAY\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\3.1.31\\microsoft.extensions.dependencyinjection.3.1.31.nupkg.sha512",
     "C:\\Users\\VINAY\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\3.1.31\\microsoft.extensions.dependencyinjection.abstractions.3.1.31.nupkg.sha512",
     "C:\\Users\\VINAY\\.nuget\\packages\\microsoft.extensions.dependencymodel\\3.1.25\\microsoft.extensions.dependencymodel.3.1.25.nupkg.sha512",
+    "C:\\Users\\VINAY\\.nuget\\packages\\microsoft.extensions.identity.core\\3.1.8\\microsoft.extensions.identity.core.3.1.8.nupkg.sha512",
+    "C:\\Users\\VINAY\\.nuget\\packages\\microsoft.extensions.identity.stores\\3.1.8\\microsoft.extensions.identity.stores.3.1.8.nupkg.sha512",
     "C:\\Users\\VINAY\\.nuget\\packages\\microsoft.extensions.logging\\3.1.31\\microsoft.extensions.logging.3.1.31.nupkg.sha512",
     "C:\\Users\\VINAY\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\3.1.31\\microsoft.extensions.logging.abstractions.3.1.31.nupkg.sha512",
     "C:\\Users\\VINAY\\.nuget\\packages\\microsoft.extensions.options\\3.1.31\\microsoft.extensions.options.3.1.31.nupkg.sha512",
