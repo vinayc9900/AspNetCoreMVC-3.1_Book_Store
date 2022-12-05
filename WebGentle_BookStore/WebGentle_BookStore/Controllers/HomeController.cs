@@ -48,11 +48,11 @@ namespace WebGentle_BookStore.Controllers
 
         // [Route("about-us/{id}/{name}")]  //about-us/7/vinay
         // [Route("about-us/{id}/test/{name}")] // about-us/5/test/vinay
-       // [Route("about-us")] // about-us?id=3&name=vinay
+        [Route("about-us")] // about-us?id=3&name=vinay
         // [HttpGet("about-us",Name ="aboutus")]
        // [Route("about-us", Name = "aboutus",Order =1)][HttpGet]
        //[Route("about-us/{name:alpha}")] //accepts only char
-        [Route("about-us/{name:alpha:minlength(5)}")] //name minlength should be 5
+       // [Route("about-us/{name:alpha:minlength(5)}")] //name minlength should be 5
         public ViewResult AboutUs(string name)
         {
             ViewData["FillName"] = "Anilkumar P";          
@@ -63,9 +63,9 @@ namespace WebGentle_BookStore.Controllers
         }
 
 
-        // [Route("contact-us")] 
+        [Route("contact-us")] 
         //[Route("contact-us",Name ="contactus")]
-        [Route("test/a{a}")]  //  /test/aVinay
+       // [Route("test/a{a}")]  //  /test/aVinay
         public ViewResult ContactUs(string a) 
         {
             bookName = "Narnia 2"; // Assignig value to ViewData Property

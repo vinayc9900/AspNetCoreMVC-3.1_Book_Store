@@ -56,7 +56,7 @@ namespace WebGentle_BookStore.Controllers
             return _bookRepository.SearchBooks(bookName, authorName);
         }
 
-      
+        [Route("addnewbook")]
         public ViewResult AddNewBook(bool isSuccess=false,int bookId=0)
         {
             //// For Dropdown default selection Pass the model in view
@@ -86,6 +86,7 @@ namespace WebGentle_BookStore.Controllers
             return View(model); //pass model to select default value for selectList & selectListItem
         }
       
+        
         [HttpPost]
 
         public async Task<IActionResult> AddNewBook(BookModel bookmodel)
