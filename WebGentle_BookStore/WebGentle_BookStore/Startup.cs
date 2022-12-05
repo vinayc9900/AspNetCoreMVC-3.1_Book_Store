@@ -12,6 +12,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using WebGentle_BookStore.Data;
+using WebGentle_BookStore.Models;
 using WebGentle_BookStore.Repository;
 
 namespace WebGentle_BookStore
@@ -19,6 +20,8 @@ namespace WebGentle_BookStore
     public class Startup
     {
         private readonly IConfiguration _configuration;
+        private object _newBokkAlertconfiguration;
+
         public Startup(IConfiguration configuration)
         {
             _configuration = configuration;
@@ -44,6 +47,7 @@ namespace WebGentle_BookStore
 
            // services.AddScoped<BookRepository, BookRepository>();
             services.AddScoped<IBookRepository, BookRepository>(); //Dependency Injection
+            services.Configure<NewBookAlertConfig>(_configuration.GetSection("NewAlert"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

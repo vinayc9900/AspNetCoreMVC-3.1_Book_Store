@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
@@ -24,11 +25,17 @@ namespace WebGentle_BookStore.Controllers
         public BookModel Book { get; set; }
 
         private readonly IConfiguration configuration;
-        public HomeController(IConfiguration _configuration)
-        {
-            configuration = _configuration;
-        }
+        private readonly NewBookAlertConfig _newBokkAlertconfiguration;
+        //public HomeController(IConfiguration _configuration)
+        //{
+        //    configuration = _configuration;
+        //}
 
+        public HomeController(IOptionsSnapshot<NewBookAlertConfig> newBokkAlertconfiguration)
+        //public HomeController(IOptions<NewBookAlertConfig> newBokkAlertconfiguration)
+        {
+            _newBokkAlertconfiguration = newBokkAlertconfiguration.Value;
+        }
 
 
 
@@ -70,13 +77,17 @@ namespace WebGentle_BookStore.Controllers
             //var newBook = configuration.GetSection("NewAlert").GetValue<bool>("DisplayNewBookAlert");
 
             // using Object Binding
-            var newBookAlert = new NewBookAlertConfig();
-            configuration.Bind("NewAlert", newBookAlert);
-            bool isDisplay = newBookAlert.DisplayNewBookAlert;
-            string bookName = newBookAlert.BookName;
+            //var newBookAlert = new NewBookAlertConfig();
+            //configuration.Bind("NewAlert", newBookAlert);
+            //bool isDisplay = newBookAlert.DisplayNewBookAlert;
+            //string bookName = newBookAlert.BookName;
+
+            //using IOptions
+            var result = _newBokkAlertconfiguration.DisplayNewBookAlert;
+            var bookName = _newBokkAlertconfiguration.BookName;
 
             return View();
-        }
+        } 
 
         // Attribute Routing
 

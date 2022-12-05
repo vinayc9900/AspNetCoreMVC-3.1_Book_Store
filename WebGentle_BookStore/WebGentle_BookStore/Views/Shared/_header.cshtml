@@ -1,10 +1,14 @@
 ﻿@*@inject WebGentle_BookStore.Repository.IBookRepository _bookRepository*@
 @using Microsoft.Extensions.Configuration
-@inject IConfiguration _configutaion
-@{ 
+@inject IConfiguration _configutaion   
+@*@inject Microsoft.Extensions.Options.IOptions<NewBookAlertConfig> _newBookAlert*@
+@inject Microsoft.Extensions.Options.IOptionsSnapshot<NewBookAlertConfig> _newBookAlert
+@{
     // var newBook = _configutaion.GetSection("NewAlert");
     var newBookAlert = new NewBookAlertConfig();
     _configutaion.Bind("NewAlert", newBookAlert);
+
+    var newBookAlertConfig = _newBookAlert.Value;
 }
 <header>
     <div class="container">
@@ -14,6 +18,7 @@
                 <img src="~/images/books/book2.jpg" width="30" height="30" asp-append-version="true" class="rounded-pill" />
                 @*@_bookRepository.GetAppName()*@
                 @_configutaion["AppName"]
+
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -59,13 +64,15 @@
 </header>
 @*@if (_configutaion.GetValue<bool>("NewAlert:DisplayNewBookAlert"))*@
 @*@if(newBook.GetValue<bool>("DisplayNewBookAlert"))*@
-@if(newBookAlert.DisplayNewBookAlert)
+@*@if(newBookAlert.DisplayNewBookAlert)*@
+@if (newBookAlertConfig.DisplayNewBookAlert)
 {
-<div class="alert alert-info mt-4" role="alert">
+    <div class="alert alert-info mt-4" role="alert">
 
-    @*@_configutaion["NewAlert:BookName"]*@
-    @*@(newBook.GetValue<string>("BookName"))*@
-    @newBookAlert.BookName
-</div>
+        @*@_configutaion["NewAlert:BookName"]*@
+        @*@(newBook.GetValue<string>("BookName"))*@
+        @*@newBookAlert.BookName*@
+        @newBookAlertConfig.BookName
+    </div>
 
 }
