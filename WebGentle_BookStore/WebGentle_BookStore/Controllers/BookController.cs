@@ -17,11 +17,12 @@ namespace WebGentle_BookStore.Controllers
                                      // i.e Home/ContactUs
     public class BookController : Controller
     {
-        private readonly BookRepository _bookRepository=null;
+       // private readonly BookRepository _bookRepository=null;
+        private readonly IBookRepository _bookRepository = null;
         private readonly IWebHostEnvironment _webhostEnvironment;
         [ViewData]  //View Data Attribute
         public string Title { get; set; }  
-        public BookController(BookRepository bookRepository, IWebHostEnvironment webHostEnvironment)
+        public BookController(IBookRepository bookRepository, IWebHostEnvironment webHostEnvironment)
         {
             _bookRepository = bookRepository;
             _webhostEnvironment = webHostEnvironment;// for server path

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
@@ -8,17 +9,28 @@ using WebGentle_BookStore.Models;
 
 namespace WebGentle_BookStore.Controllers
 {
-   // [Route("[controller]/[action]")] // i.e Home/Index
-                                     // i.e Home/AboutUs
-                                     // i.e Home/ContactUs
+    // [Route("[controller]/[action]")] // i.e Home/Index
+    // i.e Home/AboutUs
+    // i.e Home/ContactUs
+   
     public class HomeController:Controller
     { 
+
         [ViewData]  //View Data Attribute
         public string bookName { get; set; }
         [ViewData]  //View Data Attribute
         public string Title { get; set; }
         [ViewData]  //View Data Attribute
         public BookModel Book { get; set; }
+
+        private readonly IConfiguration configuration;
+        public HomeController(IConfiguration _configuration)
+        {
+            configuration = _configuration;
+        }
+
+
+
 
         [Route("")]  // will exeute with default controller & view i.e Home/Index
      // [Route("~/")]  use ~/ symbol to override Previous/Existing Route
@@ -41,6 +53,12 @@ namespace WebGentle_BookStore.Controllers
             ViewBag.Title = "Book Store";
             ViewBag.Type = new BookModel() {Id=1, Author="Anil" };
             Title = "Home";
+
+            //Reading value from AppSettings.json
+            var result = configuration["AppName"]; // look AppSettings.json
+            var key1 = configuration["infoObj:key1"];
+            var key2 = configuration["infoObj:key2"];
+            var key3 = configuration["infoObj:key3:key3obj1"];
             return View();
         }
 

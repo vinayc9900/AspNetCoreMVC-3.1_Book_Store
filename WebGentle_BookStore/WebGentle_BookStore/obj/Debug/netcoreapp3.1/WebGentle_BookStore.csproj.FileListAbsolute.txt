@@ -429,3 +429,4 @@ D:\MVC Practice\BookStore\WebGentle_BookStore\WebGentle_BookStore\obj\Debug\netc
 D:\MVC Practice\BookStore\WebGentle_BookStore\WebGentle_BookStore\obj\Debug\netcoreapp3.1\WebGentle_BookStore.pdb
 D:\MVC Practice\BookStore\WebGentle_BookStore\WebGentle_BookStore\obj\Debug\netcoreapp3.1\WebGentle_BookStore.genruntimeconfig.cache
 D:\MVC Practice\BookStore\WebGentle_BookStore\WebGentle_BookStore\obj\Debug\netcoreapp3.1\WebGentle_BookStore.csproj.AssemblyReference.cache
+D:\MVC Practice\BookStore\WebGentle_BookStore\WebGentle_BookStore\bin\Debug\netcoreapp3.1\appsettings.Production.json

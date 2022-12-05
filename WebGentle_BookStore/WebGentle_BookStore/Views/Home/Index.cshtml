@@ -1,4 +1,5 @@
-﻿
+﻿@inject WebGentle_BookStore.Repository.IBookRepository _bookRepository
+
 @{ 
     //ViewData["Title"] = "Home";
     dynamic data = ViewBag.data;
@@ -28,6 +29,11 @@
                 Author=@ViewBag.Type.Author
             </p>
             <a href="#" class="btn btn-primary">Search Books</a>
+
+            @foreach(var m in await _bookRepository.GetAllBooks())
+            {
+                <h2>@m.Title</h2>
+            }
         </div>
         <div class="py-5 bg-light">
             @*<h3 class="h3">Top Books</h3>*@

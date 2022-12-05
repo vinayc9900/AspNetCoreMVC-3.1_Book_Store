@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +12,12 @@ namespace WebGentle_BookStore.Repository
     public class BookRepository : IBookRepository
     {
         private readonly BookStoreContext _context = null;
-        public BookRepository(BookStoreContext context)
+        private readonly IConfiguration _configuration;
+        public BookRepository(BookStoreContext context,IConfiguration configuration)
         {
             _context = context;
+            _configuration = configuration;
+
         }
         public async Task<int> AddNewBook(BookModel bookModel)
         {
@@ -137,6 +141,11 @@ namespace WebGentle_BookStore.Repository
         internal List<BookModel> SearchBook()
         {
             throw new NotImplementedException();
+        }
+        public string GetAppName()
+        {
+            //return "Book Store";
+            return _configuration["AppName"]; // AppSettings.json file
         }
     }
 }
