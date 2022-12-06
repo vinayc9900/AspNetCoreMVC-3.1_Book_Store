@@ -62,7 +62,15 @@ namespace WebGentle_BookStore.Controllers
                     }
                     return RedirectToAction("Index", "Home");
                 }
-                ModelState.AddModelError("", "Invalid Credentils");
+                if(result.IsNotAllowed)
+                {
+                    ModelState.AddModelError("", "Not Allowed to Login");
+                }
+               
+                else
+                {
+                    ModelState.AddModelError("", "Invalid Credentials");
+                }
             }
             return View();
         }
