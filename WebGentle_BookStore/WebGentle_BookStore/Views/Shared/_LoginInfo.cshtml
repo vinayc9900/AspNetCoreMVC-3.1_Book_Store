@@ -4,7 +4,8 @@
 {
     string name1;
     string name = User.Identity.Name;
-    if(name.Length>12)
+    
+    if (name.Length>12)
     {
         name1 = name.Substring(0, 12);
     }
@@ -13,20 +14,23 @@
         name1 = name;
     }
 
-    <li class="nav-item">
-        <a class="nav-link">Hello, name1 </a>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle text-dark"href="#" id="navbarDropdown" role="button" data-toggle="collapse" data-target="#navbarDp">
+        Hello, @(User.FindFirst("UserFirstName").Value+" "+User.FindFirst("UserLastName").Value)
+        </a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" asp-controller="Account" asp-action="LogOut">Log Out</a>
-    </li>
+    <div class="dropdown-menu" area-labelledby="navbarDropdown" id="navbarDp">
+        <a class="dropdown-item" asp-controller="Account" asp-action="LogOut">Log Out</a>
+        <a class="dropdown-item" asp-controller="Account" asp-action="ChangePassword">Change Password</a>
+    </div>
+   
 }
 
 else
 {
-    <li class="nav-item">
-        <a class="nav-link" asp-action="LogIn" asp-controller="Account" asp-route-returnUrl="@Context.Request.Path">LogIn</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" asp-controller="Account" asp-action="Signup">Register</a>
-    </li>
+    
+<li class="nav-item">
+    <a class="btn btn-outline-primary" asp-action="LogIn" asp-controller="Account" asp-route-returnUrl="@Context.Request.Path">LogIn</a>
+    <a class="btn btn-outline-primary" asp-controller="Account" asp-action="Signup">Register</a>
+</li>
 }

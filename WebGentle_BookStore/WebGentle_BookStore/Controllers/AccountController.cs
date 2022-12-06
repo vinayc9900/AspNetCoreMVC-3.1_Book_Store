@@ -73,5 +73,31 @@ namespace WebGentle_BookStore.Controllers
             await _accountRepository.SignOutasync();
             return RedirectToAction("Index", "Home");
         }
+
+        [Route("changepassword")]
+        public  IActionResult ChangePassword()
+        {
+            return View();
+        }
+        [HttpPost("changepassword")]
+        public async Task<IActionResult> ChangePassword(ChangePasswordModel changePasswordModel)
+        {
+
+            if(ModelState.IsValid)
+            {
+                var result =await _accountRepository.ChangePasswordAsync(changePasswordModel);
+                if(result.Succeeded)
+                {
+                    ViewBag.isSuccess = true;
+                    ModelState.Clear();
+                    return View();
+                }
+                foreach(var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+            }
+            return View(changePasswordModel);
+        }
     }
 }

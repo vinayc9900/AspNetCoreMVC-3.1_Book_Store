@@ -7,6 +7,7 @@ using System.Dynamic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebGentle_BookStore.Models;
+using WebGentle_BookStore.Services;
 
 namespace WebGentle_BookStore.Controllers
 {
@@ -24,17 +25,21 @@ namespace WebGentle_BookStore.Controllers
         [ViewData]  //View Data Attribute
         public BookModel Book { get; set; }
 
-        private readonly IConfiguration configuration;
+       // private readonly IConfiguration configuration;
         private readonly NewBookAlertConfig _newBokkAlertconfiguration;
+        private readonly IUserService _userService;
+
         //public HomeController(IConfiguration _configuration)
         //{
         //    configuration = _configuration;
         //}
 
-        public HomeController(IOptionsSnapshot<NewBookAlertConfig> newBokkAlertconfiguration)
+        public HomeController(IOptionsSnapshot<NewBookAlertConfig> newBokkAlertconfiguration,
+            IUserService userService)
         //public HomeController(IOptions<NewBookAlertConfig> newBokkAlertconfiguration)
         {
             _newBokkAlertconfiguration = newBokkAlertconfiguration.Value;
+            _userService = userService;
         }
 
 
@@ -44,6 +49,9 @@ namespace WebGentle_BookStore.Controllers
                      // [Route("[controller]/[action]")]  // use current controller i.e Home/Index
         public ViewResult Index()
         {
+            var userId = _userService.getUserId();
+            var isUserLoggedIn = _userService.isAuthenticated();
+
             var obj = new { Id = 1, Name = "Vinay" };
             // View Name is Index.cshtml & Method name is also Index() so no need to pass anything in View()
             // Default Returns Index View

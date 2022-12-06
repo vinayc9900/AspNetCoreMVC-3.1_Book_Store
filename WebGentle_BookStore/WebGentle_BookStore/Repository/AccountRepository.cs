@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebGentle_BookStore.Models;
+using WebGentle_BookStore.Services;
 
 namespace WebGentle_BookStore.Repository
 {
@@ -12,11 +13,14 @@ namespace WebGentle_BookStore.Repository
         //use IdentityUser for Default 
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly IUserService _userService;
 
-        public AccountRepository(UserManager<ApplicationUser> userManager,SignInManager<ApplicationUser> signInManager)
+        public AccountRepository(UserManager<ApplicationUser> userManager,SignInManager<ApplicationUser> signInManager,
+            IUserService userService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _userService = userService;
         }
         public async Task<IdentityResult> CreateUserAsync(SignUpUserModel userModel)
         {
@@ -41,6 +45,12 @@ namespace WebGentle_BookStore.Repository
         public async Task SignOutasync()
         {
             await _signInManager.SignOutAsync();
+        }
+        public async Task<IdentityResult> ChangePasswordAsync(ChangePasswordModel changePModel)
+        {
+            var userId = _userService.getUserId();
+            var user = await _userManager.FindByIdAsync(userId);
+            return await _userManager.ChangePasswordAsync(user, changePModel.CurrentPassword, changePModel.NewPassword);
         }
     }
 }
