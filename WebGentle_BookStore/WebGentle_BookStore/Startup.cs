@@ -37,8 +37,26 @@ namespace WebGentle_BookStore
                 //options=>options.UseSqlServer("Server=.\\SQLEXPRESS;Database=BookStore;Integrated Security=True;"));
                 options => options.UseSqlServer(_configuration.GetConnectionString("DefaultConnection")));
             
-            services.AddIdentity<IdentityUser, IdentityRole>()
+           // services.AddIdentity<IdentityUser, IdentityRole>() // Default IdentityUser
+           services.AddIdentity<ApplicationUser, IdentityRole>()
            .AddEntityFrameworkStores<BookStoreContext>();
+
+            //Below code for Configuring IdentityOptions for the fields
+            services.Configure<IdentityOptions>(options => {
+                options.Password.RequiredLength = 6;
+                options.Password.RequiredUniqueChars = 1;
+                options.Password.RequireDigit = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+                  });
+
+            services.ConfigureApplicationCookie(config =>
+            {
+                //config.LoginPath = "/LogIn";
+                config.LoginPath = _configuration["Application:LoginPath"];
+            });
+            
 
                 #if DEBUG   // Only apply for Development Environment
              services.AddRazorPages().AddRazorRuntimeCompilation();//For  Razor file compilation 
@@ -68,6 +86,7 @@ namespace WebGentle_BookStore
             app.UsePathBase("/css");// Reads the css/Site.css file
             app.UseRouting();  // This must be Placed First Among all following End Points
             app.UseAuthentication();
+            app.UseAuthorization();
             //app.UseStaticFiles(new StaticFileOptions
             //{
             //    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "MyStaticFiles")),

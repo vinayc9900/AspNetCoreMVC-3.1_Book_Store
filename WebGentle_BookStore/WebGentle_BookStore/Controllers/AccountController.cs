@@ -42,5 +42,36 @@ namespace WebGentle_BookStore.Controllers
             } 
             return View();
         }
+        [Route("login")]
+        public IActionResult LogIn()
+        {
+            return View();
+        }
+        [Route("login")]
+        [HttpPost]
+        public async Task<IActionResult> LogIn(SignInModel signInModel, string returnUrl)
+        {
+            if(ModelState.IsValid)
+            {
+              var result= await  _accountRepository.PasswordSignInAsync(signInModel);
+                if(result.Succeeded)
+                {
+                    if(!string.IsNullOrEmpty(returnUrl))
+                    {
+                        return LocalRedirect(returnUrl);
+                    }
+                    return RedirectToAction("Index", "Home");
+                }
+                ModelState.AddModelError("", "Invalid Credentils");
+            }
+            return View();
+        }
+
+        [Route("logout")]
+        public async Task<IActionResult> LogOut()
+        {
+            await _accountRepository.SignOutasync();
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

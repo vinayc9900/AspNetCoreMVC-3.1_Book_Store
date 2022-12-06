@@ -8,6 +8,14 @@ namespace WebGentle_BookStore.Models
 {
     public class SignUpUserModel
     {
+        [Required(ErrorMessage = "Please enter first name")]
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+
+        [Required(ErrorMessage = "Please enter last name")]
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+
         [Required(ErrorMessage ="Please enter your Email")]
         [EmailAddress(ErrorMessage ="please enter valid Email")]
         [Display(Name ="Email Address")]

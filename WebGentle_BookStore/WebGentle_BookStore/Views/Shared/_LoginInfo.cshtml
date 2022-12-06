@@ -1,0 +1,32 @@
+﻿@inject Microsoft.AspNetCore.Identity.SignInManager<ApplicationUser> _signInManager
+
+@if (_signInManager.IsSignedIn(User))
+{
+    string name1;
+    string name = User.Identity.Name;
+    if(name.Length>12)
+    {
+        name1 = name.Substring(0, 12);
+    }
+    else
+    {
+        name1 = name;
+    }
+
+    <li class="nav-item">
+        <a class="nav-link">Hello, name1 </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" asp-controller="Account" asp-action="LogOut">Log Out</a>
+    </li>
+}
+
+else
+{
+    <li class="nav-item">
+        <a class="nav-link" asp-action="LogIn" asp-controller="Account" asp-route-returnUrl="@Context.Request.Path">LogIn</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" asp-controller="Account" asp-action="Signup">Register</a>
+    </li>
+}

@@ -1,4 +1,4 @@
-﻿@model WebGentle_BookStore.Models.SignUpUserModel
+﻿@model WebGentle_BookStore.Models.SignInModel
 
 @{
     Layout = null;
@@ -9,7 +9,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Signup</title>
+    <title>LogIn</title>
     <environment include="Development">
         <link href="~/lib/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" />
     </environment>
@@ -22,26 +22,18 @@
               asp-fallback-test-value="absolute"
               integrity="" crossorigin="anonymous">
 
-    </environment>      
+    </environment>
 </head>
 <body>
+
     <div class="container">
-        <h2>Sign Up</h2>
-        <hr />
+
         <div class="row">
             <div class="col-md-4">
-                <form asp-action="Signup">
+                <h4>Log In</h4>
+                <hr />
+                <form method="post">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <div class="form-group">
-                        <label asp-for="FirstName" class="control-label"></label>
-                        <input asp-for="FirstName" class="form-control" />
-                        <span asp-validation-for="FirstName" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="LastName" class="control-label"></label>
-                        <input asp-for="LastName" class="form-control" />
-                        <span asp-validation-for="LastName" class="text-danger"></span>
-                    </div>
                     <div class="form-group">
                         <label asp-for="Email" class="control-label"></label>
                         <input asp-for="Email" class="form-control" />
@@ -52,24 +44,25 @@
                         <input asp-for="Password" class="form-control" />
                         <span asp-validation-for="Password" class="text-danger"></span>
                     </div>
-                    <div class="form-group">
-                        <label asp-for="ConfirmPassword" class="control-label"></label>
-                        <input asp-for="ConfirmPassword" class="form-control" />
-                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="RememberMe" /> @Html.DisplayNameFor(model => model.RememberMe)
+                        </label>
                     </div>
                     <div class="form-group">
-                        <input type="submit" value="Create" class="btn btn-primary" />
+                        <input type="submit" value="LogIn" class="btn btn-primary" />
                     </div>
                 </form>
             </div>
             <div class="col-md-8">
-                <img src="~/images/login/signup.png" />
+                <img src="~/images/login/login.jpg" style="height:400px;margin-top:40px;"/>
             </div>
         </div>
-
-        <div>
-            <p>Click <a asp-action="LogIn" asp-controller="Account">here </a>to Log In</p>
-        </div>
     </div>
+    
+    <div>
+        <p>Click <a asp-action="SignUp" asp-controller="Account">here </a>to Sign Up</p>
+    </div>
+
 </body>
 </html>

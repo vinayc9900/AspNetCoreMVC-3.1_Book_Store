@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -56,7 +57,7 @@ namespace WebGentle_BookStore.Controllers
             //  http://localhost:58860/book/searchbooks?bookName=Mvc&authorName=Nitish   {controller}/{Method}?bookName=value&authorName=value
             return _bookRepository.SearchBooks(bookName, authorName);
         }
-
+        [Authorize] //Only Loged in user can access this View
         [Route("addnewbook")]
         public ViewResult AddNewBook(bool isSuccess=false,int bookId=0)
         {

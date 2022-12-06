@@ -5,10 +5,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebGentle_BookStore.Models;
 
 namespace WebGentle_BookStore.Data
 {
-    public class BookStoreContext:IdentityDbContext
+    // : IdentityDbContext  it isfor Default Identity to Inherit
+    public class BookStoreContext:IdentityDbContext<ApplicationUser>
     {
         public BookStoreContext(DbContextOptions<BookStoreContext> options)
             :base(options)
