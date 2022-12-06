@@ -28,6 +28,7 @@ namespace WebGentle_BookStore.Controllers
        // private readonly IConfiguration configuration;
         private readonly NewBookAlertConfig _newBokkAlertconfiguration;
         private readonly IUserService _userService;
+        private readonly IEmailService _emailService;
 
         //public HomeController(IConfiguration _configuration)
         //{
@@ -35,11 +36,12 @@ namespace WebGentle_BookStore.Controllers
         //}
 
         public HomeController(IOptionsSnapshot<NewBookAlertConfig> newBokkAlertconfiguration,
-            IUserService userService)
+            IUserService userService,IEmailService emailService)
         //public HomeController(IOptions<NewBookAlertConfig> newBokkAlertconfiguration)
         {
             _newBokkAlertconfiguration = newBokkAlertconfiguration.Value;
             _userService = userService;
+            _emailService = emailService;
         }
 
 
@@ -47,8 +49,20 @@ namespace WebGentle_BookStore.Controllers
         [Route("")]  // will exeute with default controller & view i.e Home/Index
      // [Route("~/")]  use ~/ symbol to override Previous/Existing Route
                      // [Route("[controller]/[action]")]  // use current controller i.e Home/Index
-        public ViewResult Index()
+        public async Task<ViewResult> Index()
         {
+            UserEmailOptions options = new UserEmailOptions()
+            {
+                ToEmail = new List<string>() { "test@gmail.com" },
+                PlaceHolders = new List<KeyValuePair<string, string>>()
+                {
+                    new KeyValuePair<string,string>("{{UserName}}","Vinay")
+                }
+            };
+
+           await  _emailService.SendTestEmail(options);
+
+
             var userId = _userService.getUserId();
             var isUserLoggedIn = _userService.isAuthenticated();
 

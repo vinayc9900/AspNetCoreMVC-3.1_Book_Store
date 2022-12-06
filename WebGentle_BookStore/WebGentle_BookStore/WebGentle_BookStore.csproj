@@ -6,19 +6,12 @@
 
   <ItemGroup>
     <Compile Remove="MyStaticFiles\**" />
-    <Compile Remove="NewFolder\**" />
    
     <Content Remove="MyStaticFiles\**" />
-   
-    <Content Remove="NewFolder\**" />
  
     <EmbeddedResource Remove="MyStaticFiles\**" />
- 
-    <EmbeddedResource Remove="NewFolder\**" />
 
     <None Remove="MyStaticFiles\**" />
-
-    <None Remove="NewFolder\**" />
  
   </ItemGroup>
 

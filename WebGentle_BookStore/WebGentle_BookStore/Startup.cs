@@ -73,8 +73,10 @@ namespace WebGentle_BookStore
             services.AddScoped<IBookRepository, BookRepository>(); //Dependency Injection
             services.AddScoped<IAccountRepository, AccountRepository>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IEmailService, EmailService>();
             services.AddScoped<IUserClaimsPrincipalFactory<ApplicationUser>, ApplicationUserClaimsPrincipalFactory>();
             services.Configure<NewBookAlertConfig>(_configuration.GetSection("NewAlert"));
+            services.Configure<SMTPConfigModel>(_configuration.GetSection("SMTPConfig"));
 
         }
 
