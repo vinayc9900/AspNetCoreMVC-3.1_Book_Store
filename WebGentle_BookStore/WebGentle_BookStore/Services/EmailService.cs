@@ -27,6 +27,13 @@ namespace WebGentle_BookStore.Models
             userEmailOptions.Body = UpdatePlaceHilders(GetEmailBody("EmailConfirm"), userEmailOptions.PlaceHolders);
             await SendEmail(userEmailOptions);
         }
+        public async Task SendEmailForForgotPassword(UserEmailOptions userEmailOptions)
+        {
+            userEmailOptions.Subject = UpdatePlaceHilders("Hello, {{UserName}}, Reset your Password", userEmailOptions.PlaceHolders);
+            userEmailOptions.Body = UpdatePlaceHilders(GetEmailBody("ForgotPassword"), userEmailOptions.PlaceHolders);
+            await SendEmail(userEmailOptions);
+        }
+      
         public EmailService(IOptions<SMTPConfigModel> smtpConfig)
         {
             _smtpConfig = smtpConfig.Value;

@@ -12,6 +12,8 @@ namespace WebGentle_BookStore.Repository
         Task<IdentityResult> ChangePasswordAsync(ChangePasswordModel changePModel);
         Task<IdentityResult> ConfirmEmailAsync(string uid, string token);
         Task GenerateEmailConfirmationtokenasync(ApplicationUser user);
+        Task GenerateForgotPasswordsync(ApplicationUser user);
+        Task<IdentityResult> ResetPasswordAsync(ResetPasswordModel model);
         Task SignOutasync();
     }
 }
