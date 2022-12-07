@@ -39,6 +39,7 @@ namespace WebGentle_BookStore.Controllers
                     return View(userModel);
                 }
                 ModelState.Clear();
+                return RedirectToAction("ConfirmEmail", new { email = userModel.Email });
             } 
             return View();
         }
@@ -106,6 +107,46 @@ namespace WebGentle_BookStore.Controllers
                 }
             }
             return View(changePasswordModel);
+        }
+
+        [HttpGet("confirmemail")]
+        public async Task<IActionResult> ConfirmEmail(string uid,string token,string email)
+        {
+            EmailConfirmModel model = new EmailConfirmModel()
+            {
+                Email = email
+            };
+            if (!string.IsNullOrEmpty(uid)&&!string.IsNullOrEmpty(token))
+            {
+                token = token.Replace(' ', '+');   
+                var result= await _accountRepository.ConfirmEmailAsync(uid,token);
+                if(result.Succeeded)
+                {
+                    model.EmailVerify = true;
+                }
+            }
+            return View(model);
+        }
+        [HttpPost("confirmemail")]
+        public async Task<IActionResult> ConfirmEmail(EmailConfirmModel emailConfirmModel)
+        {
+            var user = await _accountRepository.GetUserByEmailAsync(emailConfirmModel.Email);
+            if(user != null)
+            {
+                if(user.EmailConfirmed)
+                {
+                    emailConfirmModel.EmailVerify = true;
+                    return View();
+                }
+                 await _accountRepository.GenerateEmailConfirmationtokenasync(user);
+                emailConfirmModel.EmailSent = true;
+                ModelState.Clear();
+            }
+            else
+            {
+                ModelState.AddModelError("", "Something went wrong");
+            }
+            return View(emailConfirmModel);
         }
     }
 }

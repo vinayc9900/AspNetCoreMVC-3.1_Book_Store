@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewData["Title"] = "ConfirmationEmail";
+}
+
+<h1>ConfirmationEmail</h1>
+
+<div class="container">
+    <div class="col-md-4">
+        @if (ViewBag.isSuccess == true)
+        {
+            <div class="alert alert-success" role="alert">
+                <p>Youe Email has been verified Successfully</p>
+            </div>
+        }
+            else
+            {
+                <p>Something went wrong or your Token has been expired</p>
+            }
+
+    </div>
+</div>
+

@@ -21,6 +21,12 @@ namespace WebGentle_BookStore.Models
             userEmailOptions.Body = UpdatePlaceHilders(GetEmailBody("TestEmail"),userEmailOptions.PlaceHolders);
             await SendEmail(userEmailOptions);
         }
+        public async Task SendEmailForEmailConfirmation(UserEmailOptions userEmailOptions)
+        {
+            userEmailOptions.Subject = UpdatePlaceHilders("Hello, {{UserName}}, Confirm your Email Id", userEmailOptions.PlaceHolders);
+            userEmailOptions.Body = UpdatePlaceHilders(GetEmailBody("EmailConfirm"), userEmailOptions.PlaceHolders);
+            await SendEmail(userEmailOptions);
+        }
         public EmailService(IOptions<SMTPConfigModel> smtpConfig)
         {
             _smtpConfig = smtpConfig.Value;

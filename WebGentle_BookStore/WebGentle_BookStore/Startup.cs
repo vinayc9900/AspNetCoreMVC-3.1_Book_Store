@@ -41,7 +41,7 @@ namespace WebGentle_BookStore
             
            // services.AddIdentity<IdentityUser, IdentityRole>() // Default IdentityUser
            services.AddIdentity<ApplicationUser, IdentityRole>()
-           .AddEntityFrameworkStores<BookStoreContext>();
+           .AddEntityFrameworkStores<BookStoreContext>().AddDefaultTokenProviders();
 
             //Below code for Configuring IdentityOptions for the fields
             services.Configure<IdentityOptions>(options => {
@@ -77,7 +77,7 @@ namespace WebGentle_BookStore
             services.AddScoped<IEmailService, EmailService>();
             services.AddScoped<IUserClaimsPrincipalFactory<ApplicationUser>, ApplicationUserClaimsPrincipalFactory>();
             services.Configure<NewBookAlertConfig>(_configuration.GetSection("NewAlert"));
-            services.Configure<SMTPConfigModel>(_configuration.GetSection("SMTPConfig"));
+            services.Configure<SMTPConfigModel>(_configuration.GetSection("SMTPConfig")); 
 
         }
 

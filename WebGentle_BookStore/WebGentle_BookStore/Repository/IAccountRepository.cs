@@ -6,9 +6,12 @@ namespace WebGentle_BookStore.Repository
 {
     public interface IAccountRepository
     {
+        Task<ApplicationUser> GetUserByEmailAsync(string email);
         Task<IdentityResult> CreateUserAsync(SignUpUserModel userModel);
         Task<SignInResult> PasswordSignInAsync(SignInModel signInModel);
         Task<IdentityResult> ChangePasswordAsync(ChangePasswordModel changePModel);
+        Task<IdentityResult> ConfirmEmailAsync(string uid, string token);
+        Task GenerateEmailConfirmationtokenasync(ApplicationUser user);
         Task SignOutasync();
     }
 }
